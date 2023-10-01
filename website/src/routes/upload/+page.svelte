@@ -1,0 +1,89 @@
+<script lang="ts">
+	import Markdown from "$lib/components/Markdown.svelte";
+
+    $: markdownString = "";
+
+    const handleMarkdownTextAreaInput = (e: any) => {
+        // would rather have inline but it cries about type shit
+
+        e.target.style.height = "";
+        e.target.style.height = e.target.scrollHeight + "px";
+
+        markdownString = e.target.value;
+    };
+
+    const createDocument = (e: any) => {
+        if (!e.target) return;
+
+        const formData = new FormData(e.target);
+
+        const data = Object.fromEntries(formData);
+
+        console.log(data);
+    };
+</script>
+
+
+<div class="flex flex-col w-screen min-h-screen p-16 border-t border-solid border-white border-opacity-5">
+    <h1 class="text-4xl font-black">Upload Markdown</h1>
+    <form
+        class="flex flex-col mt-4"
+        on:submit|preventDefault={createDocument}
+        autocomplete="off"
+    >
+        <p class="my-4 text-indigo-400 font-bold">Step 1. Paste your markdown in the input box on the left.</p>
+        <div class="content flex flex-row">
+            <div class="flex flex-col w-1/2">
+                <h2 class="text-2xl font-bold">Markdown Text</h2>
+                <p>Paste your raw markdown text below.</p>
+                <textarea
+                    class="mt-4 mr-4 p-8 bg-inherit rounded-md border border-solid border-white border-opacity-5"
+                    name="markdownString"
+                    on:input={handleMarkdownTextAreaInput}
+                />
+            </div>
+            <div class="flex flex-col w-1/2 ml-16">
+                <h2 class="text-2xl font-bold">Preview</h2>
+                <p class="opacity-70">This is how your markdown will look when it's published.</p>
+                <div class="md mt-2 p-8 rounded-md border border-solid border-white border-opacity-5">
+                    <Markdown of={markdownString}/>
+                </div>
+            </div>
+        </div>
+        <p class="my-4 text-indigo-400 font-bold">Step 2. Name the markdown document. This is where people can find it.</p>
+        <div class="flex flex-row w-min rounded-md border border-solid border-white border-opacity-5">
+            <p class="px-4 py-3 bg-black bg-opacity-5 text-white font-bold text-opacity-70 rounded-l-md border-r border-solid border-white border-opacity-5">docdepot.com/view/</p>
+            <input
+                class="w-min px-4 py-2 bg-inherit rounded-r-md"
+                type="text"
+                name="name"
+                autocomplete="new-password"
+            />
+        </div>
+        <p class="my-4 text-indigo-400 font-bold">Step 3. If you're not logged in, you must provide a password in order to be able to add the page to your account once you have one.</p>
+        <div class="flex flex-col mt-4">
+            <div class="flex flex-col">
+                <label
+                    class="font-bold"
+                    for="password"
+                >
+                    Password
+                </label>
+                <input
+                    class="w-[350px] mt-2 px-4 py-3 bg-inherit rounded-md border border-solid border-white border-opacity-5"
+                    type="password"
+                    name="password"
+                    autocomplete="new-password"
+                />
+            </div>
+        </div>
+        <p class="my-4 text-indigo-400 font-bold">Step 4. Press upload to publish the page. You will be provided with a URL you can share with others.</p>
+        <button class="w-fit px-12 py-3 bg-indigo-500 font-bold rounded-md">Upload</button>
+    </form>
+</div>
+
+<style lang="postcss">
+    .content p {
+        @apply opacity-70;
+    }
+</style>

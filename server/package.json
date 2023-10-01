@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.50",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "generate": "drizzle-kit generate:sqlite",
+    "push": "drizzle-kit push:sqlite"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.3.5",
+    "drizzle-orm": "^0.28.6",
+    "elysia": "latest",
+    "showdown": "^2.1.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/showdown": "^2.0.2",
+    "better-sqlite3": "^8.7.0",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.19.13"
+  },
+  "module": "src/index.js"
+}
