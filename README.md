@@ -6,8 +6,8 @@ It's still a work in progress but star it to stay tuned I guess.
 
 Made with Svelte, Tailwind, Bun, Elysia, Typescript, Drizzle and Turso.
 
-![landing](/guide.png)
+![guide](/website/static/guide.png)
 
-![landing](/landing.png)
+![landing](/website/static/landing.png)
 
-![landing](/upload.png)
+![upload](/website/static/upload.png)
