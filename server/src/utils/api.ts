@@ -12,3 +12,9 @@ export class ConflictError extends APIError {
         super(409, message);
     };
 };
+
+export class UnauthorizedError extends APIError {
+    constructor(message: string) {
+        super(401, message);
+    };
+};

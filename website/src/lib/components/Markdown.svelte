@@ -11,19 +11,19 @@
 
 <style lang="postcss">
     :global(.md h1) {
-        @apply text-4xl font-bold my-8;
+        @apply text-4xl font-bold my-8 max-lg:text-3xl max-lg:my-6 max-[330px]:text-2xl;
     }
     
     :global(.md h2) {
-        @apply text-3xl font-bold my-6;
+        @apply text-3xl font-bold my-6 max-lg:text-2xl max-lg:my-4 max-[330px]:text-xl;
     }
     
     :global(.md h3) {
-        @apply text-2xl font-bold my-4;
+        @apply text-2xl font-bold my-4 max-lg:text-xl max-[330px]:text-lg;
     }
     
     :global(.md p) {
-        @apply font-medium my-2 opacity-80;
+        @apply font-medium my-2 opacity-80 max-lg:text-sm max-[330px]:text-xs;
     }
     
     :global(.md a) {
@@ -39,7 +39,7 @@
     }
     
     :global(.md li) {
-        @apply my-4;
+        @apply my-4 max-lg:text-sm max-lg:my-2 max-[330px]:text-xs;
     }
     
     :global(.md strong) {

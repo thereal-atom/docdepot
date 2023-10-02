@@ -30,10 +30,14 @@ export const documentRouter = new Elysia({ prefix: "/document" })
     )
     .delete(
         "/:id",
-        async ({ params }) => {
-            const document = await deleteDocumentById(params.id);
-
-            return document;
+        async ({
+            params,
+            headers,
+        }) => {
+            await deleteDocumentById(params.id, headers["dd-document-password"]);
         },
-        { params: t.Object({ id: t.Number() })},
+        {
+            params: t.Object({ id: t.Numeric() }),
+            headers: t.Object({ "dd-document-password": t.String() }),
+        },
     );

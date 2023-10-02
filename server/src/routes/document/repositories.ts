@@ -17,7 +17,7 @@ export const createDatabaseDocument = async (data: DatabaseDocumentData) => {
         .values(data)
         .returning();
 
-    return documents[0]
+    return documents[0];
 };
 
 export const getDatabaseDocument = async (filterData: {

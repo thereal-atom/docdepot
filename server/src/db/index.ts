@@ -3,10 +3,23 @@ import { createClient } from "@libsql/client";
 import config from "../config";
 import * as schema from "./schema";
 
-const client = createClient({
+// const databaseConnectionType: "remote" | "local-replica" = "local-replica";
+
+const dbOptions = {
     url: config.DB_URL,
     authToken: config.DB_TOKEN,
-});
+}
+
+// const dbOptions = {
+//     url: "file:local.sqlite",
+//     authToken: config.DB_TOKEN,
+//     syncUrl: config.DB_URL,
+// };
+
+const client = createClient(dbOptions);
+
+// sync before every request
+// client.sync().then(console.log);
  
 export const db = drizzle(client, { schema });
 

@@ -1,12 +1,17 @@
 import { Document, createDatabaseDocument, deleteDatabaseDocument, getDatabaseDocument } from "./repositories";
 import { CreateDocumentData } from "./validation";
 import { converter } from "../../utils/core";
+import { generatePasswordHash, verifyPassword } from "../../utils/cryptography";
+import { UnauthorizedError } from "../../utils/api";
 
 export const createDocument = async (data: CreateDocumentData): Promise<Document> => {
-    const htmlString = converter.makeHtml(data.markdownString)
+    const htmlString = converter.makeHtml(data.markdownString);
+
+    const hashedPassword = generatePasswordHash(data.password);
 
     const document = await createDatabaseDocument({
         ...data,
+        password: `${hashedPassword.hashedPassword};${hashedPassword.salt}`,
         htmlString,
     });
 
@@ -19,6 +24,18 @@ export const getDocumentByName = async (name: string): Promise<Document> => {
     return document;
 };
 
-export const deleteDocumentById = async (id: number): Promise<void> => {
+export const deleteDocumentById = async (id: number, password: string): Promise<void> => {
+    const document = await getDatabaseDocument({ id });
+
+    if (!document) return;
+
+    const [
+        hashedPassword,
+        salt,
+    ] = document.password.split(";");
+
+    const isPasswordValid = verifyPassword(password, salt, hashedPassword);
+    if (!isPasswordValid) throw new UnauthorizedError("invalid password");
+
     await deleteDatabaseDocument({ id });
 };
