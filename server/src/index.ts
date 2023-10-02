@@ -5,3 +5,5 @@ export const app = new Elysia()
     .use(api)
     .get("/" , () => 200)
     .listen(50451);
+
+export type App = typeof app;

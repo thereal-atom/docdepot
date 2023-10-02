@@ -7,7 +7,7 @@
     $: markdownStore.set(markdownString);
 </script>
 
-<div class="flex flex-col p-16">
+<div class="flex flex-col p-16 min-h-screen">
     <p>Markdown Editor</p>
     <div class="flex flex-row mt-4 max-lg:flex-col">
         <div class="flex flex-col w-1/2 max-lg:w-full">

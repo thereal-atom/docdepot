@@ -1,9 +1,11 @@
+import { api } from "$lib/api";
+import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async ({ params }) => {
-    const res = await fetch(`http://localhost:50451/api/document/${params.name}`);
+    const document = await api.document.getByName(params.name);
 
-    const document = await res.json();
+    if (!document) throw error(404, "document not found");
 
     return { document };
 }) satisfies PageServerLoad;
