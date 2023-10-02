@@ -2,7 +2,7 @@
     import showdown from "showdown";
     const converter = new showdown.Converter();
 
-    export let of: string;
+    export let of: string = "";
 </script>
 
 <div class="md">

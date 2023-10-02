@@ -1,16 +1,9 @@
 <script lang="ts">
 	import Markdown from "$lib/components/Markdown.svelte";
+	import MarkdownInput from "$lib/components/MarkdownInput.svelte";
+	import { markdownStore } from "$lib/stores/markdown";
 
-    $: markdownString = "";
-
-    const handleMarkdownTextAreaInput = (e: any) => {
-        // would rather have inline but it cries about type shit
-
-        e.target.style.height = "";
-        e.target.style.height = e.target.scrollHeight + "px";
-
-        markdownString = e.target.value;
-    };
+    $: markdownString = $markdownStore;
 
     const createDocument = (e: any) => {
         if (!e.target) return;
@@ -36,10 +29,9 @@
             <div class="flex flex-col w-1/2 max-lg:w-full">
                 <h2 class="text-2xl font-bold max-[330px]:text-xl">Markdown Text</h2>
                 <p>Paste your raw markdown text below.</p>
-                <textarea
-                    class="mt-4 mr-4 p-8 bg-inherit rounded-md border border-solid border-white border-opacity-5"
-                    name="markdownString"
-                    on:input={handleMarkdownTextAreaInput}
+                <MarkdownInput
+                    {markdownString}
+                    on:input={e => markdownString = e.detail}
                 />
             </div>
             <div class="flex flex-col w-1/2 ml-16 max-lg:w-full max-lg:ml-0 max-lg:mt-8">
@@ -62,7 +54,7 @@
                 class="w-min px-4 py-2 bg-inherit rounded-r-md max-sm:w-full max-sm:text-xs"
                 type="text"
                 name="name"
-                autocomplete="new-password"
+                required
             />
         </div>
         <p class="my-4 text-indigo-400 font-bold">Step 3. If you're not logged in, you must provide a password in order to be able to add the page to your account once you have one.</p>
@@ -78,7 +70,7 @@
                     class="w-[350px] mt-2 px-4 py-3 bg-inherit rounded-md border border-solid border-white border-opacity-5 max-sm:w-full max-sm:text-xs"
                     type="password"
                     name="password"
-                    autocomplete="new-password"
+                    required
                 />
             </div>
         </div>
