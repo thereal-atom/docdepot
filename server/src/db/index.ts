@@ -19,13 +19,13 @@ const dbOptions = {
 const client = createClient(dbOptions);
 
 // sync before every request
-// client.sync().then(console.log);
+client.sync().catch(console.error);
  
 export const db = drizzle(client, { schema });
 
 type DatabaseCode = "CONFLICT"
 
-class DatabaseError extends Error {
+export class DatabaseError extends Error {
     code: DatabaseCode;
 
     constructor(code: DatabaseCode, message: string) {

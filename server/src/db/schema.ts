@@ -1,7 +1,7 @@
 import documents from "../routes/document/schema";
-import emails from "../routes/email/schema";
+import newsletterSignsUps from "../routes/newsletter/schema";
 
 export {
     documents,
-    emails,
+    newsletterSignsUps,
 };

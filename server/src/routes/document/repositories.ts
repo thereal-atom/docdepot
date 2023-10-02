@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import documentsTable from "./schema";
 import { DatabaseConflictError, db } from "../../db";

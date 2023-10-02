@@ -1,6 +1,6 @@
 import { sqliteTable, int, text } from "drizzle-orm/sqlite-core";
 
-export default sqliteTable("emails", {
+export default sqliteTable("newsletterSignUps", {
     id: int("id").primaryKey({ autoIncrement: true }),
     email: text("email")
         .notNull()
