@@ -1,5 +1,5 @@
 <div class="flex flex-col min-h-screen">
-    <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#5296A5] to-[#82DDF0]">
+    <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7D70BA] to-[#DEC1FF]">
         <div class="flex flex-col items-center py-16">
             <h1 class="text-5xl font-black max-lg:text-4xl max-sm:text-2xl">Publish Your Knowledge</h1>
             <p class="mt-4 text-gray-300 text-xl font-bold text-center max-lg:text-base max-sm:text-sm max-sm:px-4">Upload your markdown files to make them available for everyone to see. It literally takes one step.</p>
