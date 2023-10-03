@@ -40,7 +40,7 @@
             <div class="font-bold max-lg:text-sm max-sm:text-xs">(you don't even need to login)</div>
             <a
                 href="/upload"
-                class="mt-4 px-4 py-2 bga-primary font-bold rounded-md max-sm:text-sm"
+                class="mt-4 px-4 py-2 bg-primary font-bold rounded-md max-sm:text-sm"
             >
                 Upload Markdown
             </a>
