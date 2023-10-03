@@ -13,6 +13,8 @@ export const documentRouter = new Elysia({ prefix: "/document" })
         }) => {
             const document = await createDocument(body);
 
+            set.status = 201;
+
             return document;
         },
         { body: createDocumentSchema },

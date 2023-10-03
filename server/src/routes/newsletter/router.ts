@@ -6,19 +6,21 @@ import { ctx } from "../../context";
 export const newsletterRouter = new Elysia({ prefix: "/newsletter" })
     .use(ctx)
     .post(
-        "/signups",
+        "/signup",
         async ({
             body,
             set,
         }) => {
             const newsletterSignUp = await createNewsletterSignUp(body);
+
+            set.status = 201;
             
             return newsletterSignUp;
         },
         { body: createNewsletterSignUpSchema },
     )
     .get(
-        "/signups",
+        "/signup",
         async () => {
             const newsletterSignUps = await getNewsletterSignUps();
 

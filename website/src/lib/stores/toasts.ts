@@ -9,7 +9,7 @@ interface CreateToastData {
 interface Toast {
     id: number;
     title: string;
-    message: string;
+    message?: string;
     type: "success" | "error";
 };
 

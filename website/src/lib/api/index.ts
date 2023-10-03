@@ -1,5 +1,6 @@
 import { config } from "$lib/config";
 import { createDocument, getDocumentByName } from "./document";
+import { createNewsletterSignUp } from "./newsletter";
 import { APIError } from "$lib/utils/error";
 
 export * from "../../../../server/src/types";
@@ -35,5 +36,10 @@ export const api = {
     document: {
         getByName: getDocumentByName,
         create: createDocument,
+    },
+    newsletter: {
+        signup: {
+            create: createNewsletterSignUp,
+        },
     },
 };

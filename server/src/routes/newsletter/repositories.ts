@@ -6,10 +6,6 @@ export type NewsletterSignUp = typeof newsletterSignsUpsTable["$inferSelect"];
 type DatabaseNewsletterSignUpData = typeof newsletterSignsUpsTable["$inferInsert"];
 
 export const createDatabaseNewsletterSignUp = async (data: DatabaseNewsletterSignUpData) => {
-    const existingNewsletterSignUp = await getDatabaseNewsletterSignUp({ email: data.email });
-
-    if (existingNewsletterSignUp) throw new DatabaseConflictError("email already subscribed");
-
     const newsletterSignUps = await db
         .insert(newsletterSignsUpsTable)
         .values(data)
