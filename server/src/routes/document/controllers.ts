@@ -8,7 +8,14 @@ export const createDocument = async (data: CreateDocumentData) => {
     const existingDocument = await getDatabaseDocument({ name: data.name });
     if (existingDocument) throw new ConflictError(`A document with that name ('${data.name}') already exists`);
 
-    if (!documentNameRegExp.test(data.name)) throw new APIError(400, "Document name must be alphanumeric and may contain '-' and '_' characters only");
+    // https://stackoverflow.com/questions/3891641/regex-test-only-works-every-other-time
+    // there is a bug with the regex engine which means that .test() resets the global flag
+    // this means that the regex only works every other time
+    // so we run it twice ever time
+    // this honestly makes no sense but fine
+    const isValidName = documentNameRegExp.test(data.name);
+    documentNameRegExp.test(data.name);
+    if (!isValidName) throw new APIError(400, `Document name ('${data.name}') must be alphanumeric and may contain '-' and '_' characters only`);
 
     const {
         hashedPassword,

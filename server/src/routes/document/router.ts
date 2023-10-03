@@ -10,6 +10,7 @@ export const documentRouter = new Elysia({ prefix: "/document" })
         async ({
             body,
             set,
+            auth,
         }) => {
             const document = await createDocument(body);
 

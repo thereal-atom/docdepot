@@ -11,8 +11,10 @@
     "@elysiajs/cors": "^0.7.1",
     "@elysiajs/cron": "^0.7.0",
     "@libsql/client": "^0.3.5",
+    "@lucia-auth/adapter-sqlite": "^2.0.0",
     "drizzle-orm": "^0.28.6",
     "elysia": "latest",
+    "lucia": "^2.7.1",
     "showdown": "^2.1.0",
     "zod": "^3.22.2"
   },

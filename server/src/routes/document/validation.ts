@@ -9,6 +9,6 @@ export const createDocumentSchema = t.Object({
     markdownString: t.String(),
 });
 
-export const documentNameRegExp = new RegExp(/^[a-z0-9_-]+$/gm);
+export const documentNameRegExp = /^[a-zA-Z0-9_-]+$/g;
 
 export type CreateDocumentData = typeof createDocumentSchema["static"];

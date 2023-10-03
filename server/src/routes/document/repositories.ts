@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import documentsTable from "./schema";
+import { documents as documentsTable } from "./schema";
 import { db } from "../../db";
 
 

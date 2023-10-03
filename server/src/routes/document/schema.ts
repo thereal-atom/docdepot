@@ -1,6 +1,6 @@
 import { sqliteTable, int, text, index } from "drizzle-orm/sqlite-core";
 
-export default sqliteTable(
+export const documents = sqliteTable(
     "documents",
     {
         id: int("id").primaryKey({ autoIncrement: true }),

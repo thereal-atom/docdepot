@@ -16,12 +16,10 @@
         const formData = new FormData(e.target);
 
         const data = {
-            markdownString: formData.get("markdownString") as string,
-            name: (formData.get("name") as string).trim(),
-            password: formData.get("password") as string,
+            markdownString: formData.get("markdownString").toString(),
+            name: formData.get("name").toString().trim(),
+            password: formData.get("password").toString(),
         };
-
-        console.log(data);
 
         api.document
             .create(data)

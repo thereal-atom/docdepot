@@ -1,6 +1,6 @@
 import { sqliteTable, int, text } from "drizzle-orm/sqlite-core";
 
-export default sqliteTable("newsletterSignUps", {
+export const newsletterSignsUps = sqliteTable("newsletterSignUps", {
     id: int("id").primaryKey({ autoIncrement: true }),
     email: text("email")
         .notNull()
@@ -9,3 +9,6 @@ export default sqliteTable("newsletterSignUps", {
         .notNull()
         .$defaultFn(() => new Date()),
 });
+
+// will not run without this ?????
+export default {};
