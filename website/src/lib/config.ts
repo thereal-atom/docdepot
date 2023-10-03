@@ -1,3 +1,4 @@
+import { env } from "$env/dynamic/public";
 import { z } from "zod";
 
 const configSchema = z.object({
@@ -10,4 +11,12 @@ const configSchema = z.object({
         .url(),
 });
 
-export const config = configSchema.parse(process.env);
+export const config = configSchema.parse(Object.fromEntries(Object.entries(env).map(([
+    key,
+    value,
+]) => {
+    return [
+        key.replace("PUBLIC_", ""),
+        value,
+    ];
+})));

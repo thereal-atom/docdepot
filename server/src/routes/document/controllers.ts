@@ -1,18 +1,24 @@
 import { createDatabaseDocument, deleteDatabaseDocument, getDatabaseDocument } from "./repositories";
-import { CreateDocumentData } from "./validation";
+import { CreateDocumentData, documentNameRegExp } from "./validation";
 import { converter } from "../../utils/core";
 import { generatePasswordHash, verifyPassword } from "../../utils/cryptography";
-import { UnauthorizedError } from "../../utils/api";
+import { APIError, ConflictError, UnauthorizedError } from "../../utils/api";
 
 export const createDocument = async (data: CreateDocumentData) => {
-    const htmlString = converter.makeHtml(data.markdownString);
+    const existingDocument = await getDatabaseDocument({ name: data.name });
+    if (existingDocument) throw new ConflictError(`A document with that name ('${data.name}') already exists`);
 
-    const hashedPassword = generatePasswordHash(data.password);
+    if (!documentNameRegExp.test(data.name)) throw new APIError(400, "Document name must be alphanumeric and may contain '-' and '_' characters only");
+
+    const {
+        hashedPassword,
+        salt,
+    } = generatePasswordHash(data.password);
 
     const document = await createDatabaseDocument({
         ...data,
-        password: `${hashedPassword.hashedPassword};${hashedPassword.salt}`,
-        htmlString,
+        password: `${hashedPassword};${salt}`,
+        htmlString: converter.makeHtml(data.markdownString),
     });
 
     return document;

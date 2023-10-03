@@ -1,16 +1,12 @@
 import { eq } from "drizzle-orm";
 import documentsTable from "./schema";
-import { DatabaseConflictError, db } from "../../db";
+import { db } from "../../db";
 
 
 export type Document = typeof documentsTable["$inferSelect"];
 type DatabaseDocumentData = typeof documentsTable["$inferInsert"];
 
 export const createDatabaseDocument = async (data: DatabaseDocumentData) => {
-    const existingDocument = await getDatabaseDocument({ name: data.name });
-
-    if (existingDocument) throw new DatabaseConflictError("document with that name already exists");
-
     const documents = await db
         .insert(documentsTable)
         .values(data)

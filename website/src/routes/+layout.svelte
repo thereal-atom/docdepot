@@ -1,15 +1,17 @@
 <script>
 	import { page } from "$app/stores";
+	import { config } from "$lib/config";
+	import ToastHandler from "$lib/components/ToastHandler.svelte";
     import Github from "$lib/components/icons/Github.svelte";
 	import Twitter from "$lib/components/icons/Twitter.svelte";
-	import { config } from "$lib/config";
     import "../app.css";
 </script>
 
+<ToastHandler />
 {#if config.NODE_ENV === "production"}
     <p class="p-12">womp womp no access yet lol. message me on twitter: <a class="text-indigo-500" href="https://twitter.com/oscarfalll">@oscarfalll</a></p>
 {:else}
-    <div class="flex flex-col w-full min-h-screen {$page.error ? "h-screen" : ""}  h-full">
+    <div class="flex flex-col w-full min-h-screen h-full">
         <div class="flex flex-col items-center w-full">
             <div class="nav-bar flex flex-row items-center justify-between w-full py-12 px-72 bg-primary border-b border-solid border-white border-opacity-5 max-lg:px-12 max-sm:flex-col max-sm:px-0 max-sm:py-8">
                 <a
@@ -30,7 +32,7 @@
                         Edit
                     </a>
                     <a
-                        href="/view/guide"
+                        href="/guide"
                     >
                         Guide
                     </a>
@@ -44,7 +46,7 @@
                 <p class="mt-4">{$page.error.message}</p>
             </div>
         {:else}
-            <div class="h-full">
+            <div class="h-full flex-1">
                 <slot />
             </div>
         {/if}

@@ -1,8 +1,17 @@
 import Elysia from "elysia";
+import { cron } from "@elysiajs/cron";
 import { APIError, ConflictError } from './../utils/api';
-import { DatabaseConflictError, DatabaseError } from '../db';
+import { DatabaseConflictError, DatabaseError, client, } from '../db';
+import config from "../config";
 
 export const ctx = new Elysia({ name: "@app/ctx",})
+    .use(config.DB_CONNECTION_TYPE === "local-replica" ? cron({
+        name: "heartbeat",
+        pattern: "*/2 * * * * *",
+        run() {
+            void client.sync().then(() => {});
+        },
+    }) : (a) => a)
     .error({
         ConflictError,
         DatabaseConflictError,
@@ -12,6 +21,8 @@ export const ctx = new Elysia({ name: "@app/ctx",})
         error,
         set,
     }) => {
+        console.error(error);
+
         set.status = 500;
 
         if (code === "NOT_FOUND") set.status = 404;
@@ -34,4 +45,4 @@ export const ctx = new Elysia({ name: "@app/ctx",})
     })
     .onStart(({ app }) => {
         console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
-    })
+    });

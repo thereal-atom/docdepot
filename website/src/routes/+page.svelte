@@ -1,12 +1,12 @@
 <div class="flex flex-col min-h-screen">
-    <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7D70BA] to-[#DEC1FF]">
+    <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7353BA] to-[#2F195F]">
         <div class="flex flex-col items-center py-16">
             <h1 class="text-5xl font-black max-lg:text-4xl max-sm:text-2xl">Publish Your Knowledge</h1>
             <p class="mt-4 text-gray-300 text-xl font-bold text-center max-lg:text-base max-sm:text-sm max-sm:px-4">Upload your markdown files to make them available for everyone to see. It literally takes one step.</p>
             <div class="font-bold max-lg:text-sm max-sm:text-xs">(you don't even need to login)</div>
             <a
                 href="/upload"
-                class="mt-4 px-4 py-2 bg-[#191B21] font-bold rounded-md max-sm:text-sm"
+                class="mt-4 px-4 py-2 bg-primary font-bold rounded-md max-sm:text-sm"
             >
                 Upload Markdown
             </a>
@@ -30,7 +30,7 @@
                 placeholder="Email Address"
                 type="text"
             />
-            <button class="mt-4 ml-4 px-4 py-2 bg-[#5296A5] font-bold rounded-md max-sm:ml-0">Sign Up</button>
+            <button class="mt-4 ml-4 px-4 py-2 bg-[#7353BA] font-bold rounded-md max-sm:ml-0">Sign Up</button>
         </form>
     </div>
 </div>
