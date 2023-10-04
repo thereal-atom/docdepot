@@ -1,16 +1,18 @@
 import { writable } from "svelte/store";
 
+type ToastType = "success" | "error" | "info";
+
 interface CreateToastData {
     title: string;
-    message: string;
-    type: "success" | "error";
+    message?: string;
+    type: ToastType;
 };
 
 interface Toast {
     id: number;
     title: string;
     message?: string;
-    type: "success" | "error";
+    type: ToastType;
 };
 
 export const toasts = writable<Toast[]>([]);

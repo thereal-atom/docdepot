@@ -12,7 +12,7 @@ export const load = (({ route }) => {
         addToast({
             title: "DocDepot is still being developed.",
             message: "In the mean time, sign up to the newsletter to stay tuned.",
-            type: "error",
+            type: "info",
         });
 
         throw redirect(303, "/");
