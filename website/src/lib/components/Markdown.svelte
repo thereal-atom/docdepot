@@ -50,6 +50,15 @@
         @apply bg-gray-900 px-1 py-0.5 rounded-md text-red-500;
     }
     
+    :global(.md pre) {
+        @apply my-2 p-4 bg-gray-900 rounded-md;
+    }
+    
+    :global(.md pre code) {
+        @apply text-inherit px-0 py-0;
+        font-family: monospace;
+    }
+    
     :global(.md img) {
         @apply my-4;
     }
