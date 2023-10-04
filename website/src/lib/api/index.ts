@@ -3,7 +3,6 @@ import { config } from "$lib/config";
 import { config as serverConfig } from "$lib/server/config";
 import { createDocument, getDocumentByName } from "./document";
 import { createNewsletterSignUp } from "./newsletter";
-// import { APIError } from "$lib/utils/error";
 
 export * from "../../../../server/src/types";
 
