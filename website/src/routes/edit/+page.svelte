@@ -34,7 +34,10 @@
         {#if tab === "markdown"}
             <MarkdownInput
                 {markdownString}
-                on:input={e => markdownStore.set(e.detail)}
+                on:input={e => {
+                    markdownStore.set(e.detail);
+                    markdownString = "";
+                }}
             />
         {:else}
             <div class="p-16 max-lg:p-8">
