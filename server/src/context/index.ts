@@ -19,6 +19,7 @@ export const ctx = new Elysia({ name: "@app/ctx" })
     .use(helmet())
     .use(logger({
         level: "error",
+        name: "docdepot-logger",
     }))
     .onRequest(({
         set,
@@ -49,7 +50,7 @@ export const ctx = new Elysia({ name: "@app/ctx" })
             log.debug(`Request received: ${request.method}: ${request.url}`);
         };
     })
-    .onResponse(({ log, request, set }) => {
+    .onResponse(({ log, request }) => {
         if (log && prod) {
             log.debug(`Response sent: ${request.method}: ${request.url}`);
         };
@@ -80,5 +81,5 @@ export const ctx = new Elysia({ name: "@app/ctx" })
             };
         };
 
-        return error.message;
+        return error.toString();
     })
