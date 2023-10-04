@@ -11,12 +11,18 @@ const configSchema = z.object({
         .url(),
 });
 
-export const config = configSchema.parse(Object.fromEntries(Object.entries(env).map(([
-    key,
-    value,
-]) => {
-    return [
-        key.replace("PUBLIC_", ""),
-        value,
-    ];
-})));
+export const config = configSchema.parse(
+    Object.fromEntries(
+        Object
+            .entries(env)
+            .map(([
+                key,
+                value,
+            ]) => {
+                return [
+                    key.replace("PUBLIC_", ""),
+                    value,
+                ];
+            }),
+    ),
+);
