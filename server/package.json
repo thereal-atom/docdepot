@@ -14,6 +14,7 @@
     "@lucia-auth/adapter-sqlite": "^2.0.0",
     "drizzle-orm": "^0.28.6",
     "elysia": "latest",
+    "elysia-helmet": "^1.0.1",
     "lucia": "^2.7.1",
     "showdown": "^2.1.0",
     "zod": "^3.22.2"

@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
-import config from "../config";
+import { config } from "../config";
 import * as schema from "./schema";
 
 const dbOptions = config.DB_CONNECTION_TYPE === "local-replica" ? {

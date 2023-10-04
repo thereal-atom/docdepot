@@ -1,7 +1,9 @@
+import { error } from "@sveltejs/kit";
 import { config } from "$lib/config";
+import { config as serverConfig } from "$lib/server/config";
 import { createDocument, getDocumentByName } from "./document";
 import { createNewsletterSignUp } from "./newsletter";
-import { APIError } from "$lib/utils/error";
+// import { APIError } from "$lib/utils/error";
 
 export * from "../../../../server/src/types";
 
@@ -15,10 +17,11 @@ export const apiFetch = async (path: string, options: {
     const res = await fetch(`${config.API_URL}/api${path}`, {
         method: options.method,
         body: options.method === "POST" || options.method === "PATCH" || options.method === "PUT" ? JSON.stringify(options.data) : undefined,
-        headers: headers ? {
+        headers: {
+            "DD-Secret": serverConfig.SECRET,
             ...headers,
             ...options.headers,
-        } : undefined,
+        },
     });
 
     if (res.ok) {
@@ -29,7 +32,7 @@ export const apiFetch = async (path: string, options: {
 
     const errorMessage = await res.text();
 
-    throw new APIError(res.status, errorMessage || "there was an unexpected error");
+    throw error(res.status, errorMessage || "there was an unexpected error");
 };
 
 export const api = {

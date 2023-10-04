@@ -1,39 +1,9 @@
-<script lang="ts">
-	import { page } from "$app/stores";
-    import { api } from "$lib/api";
-	import { config } from "$lib/config";
+<script>
+	import { applyAction, enhance } from "$app/forms";
 	import { addToast } from "$lib/stores/toasts";
 
     $: loading = false;
-
-    const signUpToNewsletter = (e: any) => {
-        loading = true;
-
-        const formData = new FormData(e.target);
-
-        api.newsletter.signup
-            .create({ email: formData.get("email").toString() })
-            .then(() => {
-                addToast({
-                    title: "Subscribed successfully",
-                    message: "Look out in your inbox for updates!",
-                    type: "success",
-                });
-
-                loading = false;
-            })
-            .catch(err => {
-                addToast({
-                    title: "There was an error subscribing",
-                    message: err.message,
-                    type: "error",
-                });
-
-                loading = false;
-            });
-    };
 </script>
-
 <div class="flex flex-col min-h-screen">
     <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7353BA] to-[#2F195F]">
         <div class="flex flex-col items-center py-16">
@@ -62,13 +32,53 @@
         <p class="text-2xl font-bold text-center max-sm:text-sm">Join the email newsletter to stay tuned for updates.</p>
         <form
             class="flex flex-row max-sm:flex-col max-sm:w-full"
-            on:submit|preventDefault={signUpToNewsletter}
+            method="POST"
+            use:enhance={() => {
+                // this code is either really cool, or really shit, lol
+                // the actual handling of the request is in '+page.server.ts'
+                // this is done because it uses a server env variable (env.SECRET) so it shouldn't run on the client side
+                // the result of the request is handled here
+                // this is reminiscent of my architecture on the backend
+                // where the router only handles the http stuff and the controller handles business logic and so on
+                // but here the page.server handles the fetch stuff and the form handles the response stuff
+                // again, either really cool or just shit lmao
+
+                loading = true;
+
+                return async ({
+                    result,
+                    update,
+                }) => {
+                    addToast(
+                        result.type === "success" ? {
+                            title: "Subscribed successfully",
+                            message: "Look out in your inbox for updates!",
+                            type: "success",
+                        }
+                        : result.type === "error" ? {
+                            title: "There was an error subscribing",
+                            message: result.error.message,
+                            type: "error",
+                        }
+                        : {
+                            title: "Unknown Error",
+                            message: "There was an unknown error.",
+                            type: "error",
+                        }
+                    );
+
+                    loading = false;
+
+                    if (result.type !== "error") update();
+                };
+            }}
         >
             <input
                 class="mt-4 px-4 py-3 bg-inherit font-bold rounded-md border border-solid border-white border-opacity-5"
                 placeholder="Your Email Address"
                 type="text"
                 name="email"
+                required
             />
             <button
                 class="mt-4 ml-4 px-4 py-2 bg-[#7353BA] font-bold rounded-md max-sm:ml-0 disabled:opacity-40"

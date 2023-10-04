@@ -1,8 +1,9 @@
 import Elysia from "elysia";
 import { cron } from "@elysiajs/cron";
+import { helmet } from "elysia-helmet";
 import { APIError, ConflictError } from './../utils/api';
 import { DatabaseConflictError, DatabaseError, client, } from '../db';
-import config from "../config";
+import { config } from "../config";
 import { auth } from "../auth";
 
 export const ctx = new Elysia({ name: "@app/ctx" })
@@ -14,6 +15,17 @@ export const ctx = new Elysia({ name: "@app/ctx" })
         },
     }) : (a) => a)
     .decorate("auth", auth)
+    .use(helmet())
+    .onRequest(({
+        set,
+        request: { headers },
+    }) => {
+        if (!headers || headers.get("dd-secret") !== config.SECRET) {
+            set.status = 403;
+
+            return "Forbidden";
+        };
+    })
     .error({
         ConflictError,
         DatabaseConflictError,

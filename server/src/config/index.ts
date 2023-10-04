@@ -14,6 +14,8 @@ const configSchema = z.object({
         "remote",
         "local-replica",
     ]),
+    SECRET: z.string(),
 });
 
-export default configSchema.parse(process.env);
+export const config = configSchema.parse(process.env);
+export const prod = config.NODE_ENV === "production";

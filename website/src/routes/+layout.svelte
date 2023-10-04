@@ -36,16 +36,16 @@
             <div class="w-20"></div>
         </div>
     </div>
-    {#if $page.error}
-        <div class="w-screen h-full flex flex-col items-center justify-center">
-            <h1 class="text-6xl text-indigo-500 font-bold">{$page.status}</h1>
-            <p class="mt-4">{$page.error.message}</p>
-        </div>
-    {:else}
-        <div class="h-full flex-1">
+    <div class="h-full flex-1">
+        {#if $page.error}
+            <div class="flex flex-col items-center justify-center w-full h-full">
+                <h1 class="text-6xl text-indigo-500 font-bold">{$page.status}</h1>
+                <p class="mt-4">{$page.error.message}</p>
+            </div>
+        {:else}
             <slot />
-        </div>
-    {/if}
+        {/if}
+    </div>
     <div class="footer flex flex-row justify-center items-center w-full py-8 border-t border-solid border-white border-opacity-5 max-sm:flex-col-reverse">
         <div class="socials flex flex-row">
             <a href="https://twitter.com/oscarfalll">

@@ -9,6 +9,3 @@ export const newsletterSignsUps = sqliteTable("newsletterSignUps", {
         .notNull()
         .$defaultFn(() => new Date()),
 });
-
-// will not run without this ?????
-export default {};

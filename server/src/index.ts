@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 import { api } from './routes';
-import config from "./config";
+import { config } from "./config";
 import cors from "@elysiajs/cors";
 
 export const app = new Elysia()

@@ -21,7 +21,9 @@ export const removeToast = (id: number) => {
     });
 };
 
-export const addToast = (toast: CreateToastData) => {
+export const addToast = (toast?: CreateToastData) => {
+    if (!toast) return;
+    
     const id = Math.floor(Math.random() * 1000);
     toasts.update((toasts) => [
         ...toasts,
