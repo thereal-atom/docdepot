@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { api } from "$lib/api";
+	import { page } from "$app/stores";
+    import { api } from "$lib/api";
+	import { config } from "$lib/config";
 	import { addToast } from "$lib/stores/toasts";
 
     $: loading = false;

@@ -1,5 +1,5 @@
-import newsletterSignsUpsTable from "./schema";
-import { DatabaseConflictError, db } from "../../db";
+import { newsletterSignsUps as newsletterSignsUpsTable } from "./schema";
+import { db } from "../../db";
 import { eq } from "drizzle-orm";
 
 export type NewsletterSignUp = typeof newsletterSignsUpsTable["$inferSelect"];
