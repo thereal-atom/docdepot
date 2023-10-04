@@ -8,6 +8,7 @@
     "push": "drizzle-kit push:sqlite"
   },
   "dependencies": {
+    "@bogeychan/elysia-logger": "^0.0.11",
     "@elysiajs/cors": "^0.7.1",
     "@elysiajs/cron": "^0.7.0",
     "@libsql/client": "^0.3.5",
@@ -20,6 +21,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "latest",
     "@types/showdown": "^2.0.2",
     "better-sqlite3": "^8.7.0",
     "bun-types": "latest",

@@ -1,9 +1,10 @@
 import Elysia from "elysia";
 import { cron } from "@elysiajs/cron";
 import { helmet } from "elysia-helmet";
+import { logger } from "@bogeychan/elysia-logger";
 import { APIError, ConflictError } from './../utils/api';
 import { DatabaseConflictError, DatabaseError, client, } from '../db';
-import { config } from "../config";
+import { config, prod } from "../config";
 import { auth } from "../auth";
 
 export const ctx = new Elysia({ name: "@app/ctx" })
@@ -16,6 +17,9 @@ export const ctx = new Elysia({ name: "@app/ctx" })
     }) : (a) => a)
     .decorate("auth", auth)
     .use(helmet())
+    .use(logger({
+        level: "error",
+    }))
     .onRequest(({
         set,
         request: { headers },
@@ -30,12 +34,33 @@ export const ctx = new Elysia({ name: "@app/ctx" })
         ConflictError,
         DatabaseConflictError,
     })
+    .onStart(({ app, log }) => {
+        if (log) {
+            log.info(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
+        };
+    })
+    .onStop(({ log }) => {
+        if (log && prod) {
+            log.info("Server stopped");
+        };
+    })
+    .onRequest(({ log, request }) => {
+        if (log && prod) {
+            log.debug(`Request received: ${request.method}: ${request.url}`);
+        };
+    })
+    .onResponse(({ log, request, set }) => {
+        if (log && prod) {
+            log.debug(`Response sent: ${request.method}: ${request.url}`);
+        };
+    })
     .onError(({
         code,
         error,
         set,
+        log,
     }) => {
-        console.error(error);
+        if (log && prod) log.error(error);
 
         set.status = 500;
 
@@ -57,6 +82,3 @@ export const ctx = new Elysia({ name: "@app/ctx" })
 
         return error.message;
     })
-    .onStart(({ app }) => {
-        console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
-    });

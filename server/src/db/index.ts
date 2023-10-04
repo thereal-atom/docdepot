@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
-import { config } from "../config";
+import { config, prod } from "../config";
 import * as schema from "./schema";
 
 const dbOptions = config.DB_CONNECTION_TYPE === "local-replica" ? {
@@ -15,7 +15,8 @@ const dbOptions = config.DB_CONNECTION_TYPE === "local-replica" ? {
 export const client = createClient(dbOptions);
 client.sync().catch(console.error);
 
-export const db = drizzle(client, { schema });
+// TODO: implement Pino logger
+export const db = drizzle(client, { schema, logger: prod });
 
 type DatabaseCode = "CONFLICT";
 
