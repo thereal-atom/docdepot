@@ -1,8 +1,48 @@
 <script>
-	import { applyAction, enhance } from "$app/forms";
+	import { enhance } from "$app/forms";
 	import { addToast } from "$lib/stores/toasts";
 
     $: loading = false;
+
+    const handleSubscribe = () => {
+        // this code is either really cool, or really shit, lol
+        // the actual handling of the request is in '+page.server.ts'
+        // this is done because it uses a server env variable (env.SECRET) so it shouldn't run on the client side
+        // the result of the request is handled here
+        // this is reminiscent of my architecture on the backend
+        // where the router only handles the http stuff and the controller handles business logic and so on
+        // but here the page.server handles the fetch stuff and the form handles the response stuff
+        // again, either really cool or just shit lmao
+
+        loading = true;
+
+        return async ({
+            result,
+            update,
+        }) => {
+            addToast(
+                result.type === "success" ? {
+                    title: "Subscribed successfully",
+                    message: "Look out in your inbox for updates!",
+                    type: "success",
+                }
+                : result.type === "error" ? {
+                    title: "There was an error subscribing",
+                    message: result.error.message,
+                    type: "error",
+                }
+                : {
+                    title: "Unknown Error",
+                    message: "There was an unknown error.",
+                    type: "error",
+                }
+            );
+
+            loading = false;
+
+            if (result.type !== "error") update();
+        };
+    };
 </script>
 <div class="flex flex-col min-h-screen">
     <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7353BA] to-[#2F195F]">
@@ -33,45 +73,7 @@
         <form
             class="flex flex-row max-sm:flex-col max-sm:w-full"
             method="POST"
-            use:enhance={() => {
-                // this code is either really cool, or really shit, lol
-                // the actual handling of the request is in '+page.server.ts'
-                // this is done because it uses a server env variable (env.SECRET) so it shouldn't run on the client side
-                // the result of the request is handled here
-                // this is reminiscent of my architecture on the backend
-                // where the router only handles the http stuff and the controller handles business logic and so on
-                // but here the page.server handles the fetch stuff and the form handles the response stuff
-                // again, either really cool or just shit lmao
-
-                loading = true;
-
-                return async ({
-                    result,
-                    update,
-                }) => {
-                    addToast(
-                        result.type === "success" ? {
-                            title: "Subscribed successfully",
-                            message: "Look out in your inbox for updates!",
-                            type: "success",
-                        }
-                        : result.type === "error" ? {
-                            title: "There was an error subscribing",
-                            message: result.error.message,
-                            type: "error",
-                        }
-                        : {
-                            title: "Unknown Error",
-                            message: "There was an unknown error.",
-                            type: "error",
-                        }
-                    );
-
-                    loading = false;
-
-                    if (result.type !== "error") update();
-                };
-            }}
+            use:enhance={handleSubscribe}
         >
             <input
                 class="mt-4 px-4 py-3 bg-inherit font-bold rounded-md border border-solid border-white border-opacity-5"

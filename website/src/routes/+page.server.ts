@@ -6,7 +6,11 @@ export const actions = {
         const formData = await request.formData();
         const data = Object.fromEntries(formData);
 
-        const newsletterSignUp = await api.newsletter.signup.create({ email: data.email.toString() });
+        const newsletterSignUp = await api.newsletter.signup.create({
+            email: data.email
+                .toString()
+                .trim(),
+        });
 
         return newsletterSignUp;
     },
