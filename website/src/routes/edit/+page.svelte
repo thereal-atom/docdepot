@@ -1,28 +1,46 @@
-<script>
+<script lang="ts">
 	import Markdown from "$lib/components/Markdown.svelte";
 	import MarkdownInput from "$lib/components/MarkdownInput.svelte";
 	import { markdownStore } from "$lib/stores/markdown";
 
     $: markdownString = $markdownStore;
-    $: markdownStore.set(markdownString);
+
+    let tab: "markdown" | "preview";
+    $: tab = "markdown";
 </script>
 
-<div class="flex flex-col p-16 min-h-screen">
-    <p>Markdown Editor</p>
-    <div class="flex flex-row mt-4 max-lg:flex-col">
-        <div class="flex flex-col w-1/2 max-lg:w-full">
-            <h2>Markdown</h2>
+<div class="flex flex-col p-16 min-h-screen max-sm:p-8">
+    <h1 class="text-4xl font-black max-sm:text-3xl max-[330px]:text-2xl">Markdown Editor</h1>
+    <!-- TODO: extract into component -->
+    <div class="flex flex-row w-full mt-4 rounded-md border border-white border-opacity-10">
+        <button
+            class="tab border-r border-white border-opacity-10 {tab === "markdown" ? "active" : ""}"
+            type="button"
+            on:click={() => tab = "markdown"}
+            tabindex="-1"
+        >
+            Markdown
+        </button>
+        <button
+            class="tab {tab === "preview" ? "active" : ""}"
+            type="button"
+            on:click={() => tab = "preview"}
+            tabindex="-1"
+        >
+            Preview
+        </button>
+    </div>
+    <div class="flex flex-col w-full mt-4 rounded-md border border-solid border-white border-opacity-10">
+        {#if tab === "markdown"}
             <MarkdownInput
                 {markdownString}
-                on:input={e => markdownString = e.detail}
+                on:input={e => markdownStore.set(e.detail)}
             />
-        </div>
-        <div class="flex flex-col w-1/2 ml-8 max-lg:w-full max-lg:ml-0 max-lg:mt-8">
-            <h2>Preview</h2>
-            <div class="mt-4 p-8 rounded-md border border-solid border-white border-opacity-5 max-sm:p-4">
+        {:else}
+            <div class="p-16 max-lg:p-8">
                 <Markdown of={markdownString} />
             </div>
-        </div>
+        {/if}
     </div>
     <div class="flex flex-row mt-4">
         <a
@@ -33,7 +51,7 @@
         </a>
         <button
             class="ml-4 px-4 py-3 bg-gray-500 rounded-md font-bold w-fit max-sm:text-sm"
-            on:click={() => markdownString = ""}
+            on:click={() => markdownStore.set("")}
         >
             Clear Markdown
         </button>
@@ -41,7 +59,11 @@
 </div>
 
 <style lang="postcss">
-    h2 {
-        @apply text-2xl font-bold;
+    .tab.active {
+        @apply bg-white bg-opacity-[2%];
+    }
+
+    .tab {
+        @apply w-full py-3 text-lg font-bold text-center transition-all outline-1 hover:bg-white hover:bg-opacity-[2%] max-sm:text-sm;
     }
 </style>

@@ -9,7 +9,7 @@
 <ToastHandler />
 <div class="flex flex-col w-full min-h-screen h-full">
     <div class="flex flex-col items-center w-full">
-        <div class="nav-bar flex flex-row items-center justify-between w-full py-12 px-72 bg-primary border-b border-solid border-white border-opacity-5 max-lg:px-12 max-sm:flex-col max-sm:px-0 max-sm:py-8">
+        <div class="nav-bar flex flex-row items-center justify-between w-full py-12 px-72 bg-primary border-b  border-white border-opacity-10 max-lg:px-12 max-sm:flex-col max-sm:px-0 max-sm:py-8">
             <a
                 class="text-xl"
                 href="/"
@@ -46,7 +46,7 @@
             <slot />
         {/if}
     </div>
-    <div class="footer flex flex-row justify-center items-center w-full py-8 border-t border-solid border-white border-opacity-5 max-sm:flex-col-reverse">
+    <div class="footer flex flex-row justify-center items-center w-full py-8 border-t  border-white border-opacity-10 max-sm:flex-col-reverse">
         <div class="socials flex flex-row">
             <a href="https://twitter.com/oscarfalll">
                 <Twitter />

@@ -10,7 +10,7 @@
             in:fly={{ y: 200, duration: 300 }}
             out:fly={{ x: 200, duration: 300 }}
         >
-            <div class="toast {toast.type} flex flex-col w-[400px] min-h-[100px] pl-6 pr-4 py-6 rounded-md border border-solid border-white border-opacity-20 transition-all max-sm:w-full">
+            <div class="toast {toast.type} flex flex-col w-[400px] min-h-[100px] pl-6 pr-4 py-6 rounded-md border  border-white border-opacity-20 transition-all max-sm:w-full">
                 <div class="flex flex-row items-center max-sm:flex-col-reverse max-sm:items-start">
                     <div class="flex flex-col w-full">
                         <h1 class="font-bold max-sm:text-[16px]">{toast.title}</h1>
@@ -25,7 +25,7 @@
                         </p>
                     </div>
                     <button
-                        class="ml-6 w-10 h-8 text-xl font-bold text-center rounded-md border border-solid border-white border-opacity-20 max-sm:ml-0 max-sm:mb-2 max-sm:w-7 max-sm:h-7 max-sm:text-xs"
+                        class="ml-6 w-10 h-8 text-xl font-bold text-center rounded-md border  border-white border-opacity-20 max-sm:ml-0 max-sm:mb-2 max-sm:w-7 max-sm:h-7 max-sm:text-xs"
                         on:click={() => removeToast(toast.id)}
                     >
                         x

@@ -18,7 +18,7 @@ export const ctx = new Elysia({ name: "@app/ctx" })
     .decorate("auth", auth)
     .use(helmet())
     .use(logger({
-        level: "error",
+        level: "info",
         name: "docdepot-logger",
     }))
     .onRequest(({
@@ -36,9 +36,7 @@ export const ctx = new Elysia({ name: "@app/ctx" })
         DatabaseConflictError,
     })
     .onStart(({ app, log }) => {
-        if (log) {
-            log.info(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
-        };
+        log.info(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
     })
     .onStop(({ log }) => {
         if (log && prod) {

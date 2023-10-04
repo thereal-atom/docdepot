@@ -76,7 +76,7 @@
             use:enhance={handleSubscribe}
         >
             <input
-                class="mt-4 px-4 py-3 bg-inherit font-bold rounded-md border border-solid border-white border-opacity-5"
+                class="mt-4 px-4 py-3 bg-inherit font-bold rounded-md border  border-white border-opacity-10"
                 placeholder="Your Email Address"
                 type="text"
                 name="email"
