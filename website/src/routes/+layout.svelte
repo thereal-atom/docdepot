@@ -48,10 +48,16 @@
     </div>
     <div class="footer flex flex-row justify-center items-center w-full py-8 border-t  border-white border-opacity-10 max-sm:flex-col-reverse">
         <div class="socials flex flex-row">
-            <a href="https://twitter.com/oscarfalll">
+            <a
+                href="https://twitter.com/oscarfalll"
+                aria-label="Twitter"
+            >
                 <Twitter />
             </a>
-            <a href="https://github.com/thereal-atom/docdepot">
+            <a
+                href="https://github.com/thereal-atom/docdepot"
+                aria-label="Github"
+            >
                 <Github />
             </a>
         </div>

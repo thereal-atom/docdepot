@@ -58,12 +58,12 @@
             </a>
             <img
                 class="w-3/4 mt-16 rounded-md max-xl:w-full max-xl:px-8 max-md:hidden"
-                src="/hero-image.png"
+                src="/hero-image.webp"
                 alt="hero"
             />
             <img
                 class="w-full mt-12 px-8 rounded-md md:hidden max-sm:mt-24"
-                src="/hero-image-small.png"
+                src="/hero-image-small.webp"
                 alt="hero"
             />
         </div>
