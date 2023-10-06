@@ -1,6 +1,6 @@
 <script>
 	import { enhance } from "$app/forms";
-	import { page } from "$app/stores";
+	// import { page } from "$app/stores";
 	import { addToast } from "$lib/stores/toasts";
 
     $: loading = false;
@@ -45,10 +45,10 @@
         };
     };
 
-    $: innerWidth = 0;
+    // $: innerWidth = 0;
 </script>
 
-<svelte:window bind:innerWidth/>
+<!-- <svelte:window bind:innerWidth/> -->
 
 <div class="flex flex-col min-h-screen">
     <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7353BA] to-[#2F195F]">
@@ -62,7 +62,7 @@
             >
                 Upload Markdown
             </a>
-            {#if innerWidth > 768}
+            <!-- {#if innerWidth > 768}
                 <img
                     class="w-[1280px] mt-16 rounded-md max-xl:w-[1024px] max-lg:w-[768px] max-md:hidden"
                     src="/hero-image.webp"
@@ -74,7 +74,7 @@
                     src="/hero-image-small.webp"
                     alt="hero"
                 />
-            {/if}
+            {/if} -->
         </div>
     </div>
     <div class="flex flex-col items-center my-64 max-md:my-32 max-sm:my-16 max-sm:px-4">
