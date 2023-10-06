@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     font-family: 'Nunito', sans-serif;
     @apply focus:border-transparent focus:outline-none focus:outline-[1px] focus:outline-indigo-400;

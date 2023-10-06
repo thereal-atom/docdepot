@@ -50,12 +50,13 @@
     <div class="main relative flex flex-col items-center justify-center w-full h-screen max-xl:h-fit max-xl:py-32 max-lg:py-24 max-md:h-5/6 max-md:px-8">
         <div class="z-10 flex flex-col items-center">
             <h1 class="text-5xl font-black text-center max-lg:text-4xl max-md:text-3xl max-[400px]:text-xl">Share your knowledge</h1>
-            <p class="mt-4 text-lg font-semibold opacity-60 text-center max-md:text-base">Upload your markdown files to make them available for everyone to see.</p>
+            <p class="mt-4 text-lg font-semibold opacity-60 text-center max-md:text-base max-sm:text-sm">Upload your Markdown text to create a beautiful and shareable document, without any coding knowledge required.</p>
+            <a class="bg-blue-500 mt-4 px-6 py-2 rounded-md font-bold max-sm:text-sm" href="#newsletter">Upload Markdown</a>
             <Hero />
         </div>
 
         <!-- TODO: REFACTOR BRO WTF IS THIS. but it works so fine for now. -->
-        <div class="max-xl:opacity-30">
+        <div class="opacity-60 max-xl:opacity-20">
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-medium left-20 max-lg:left-12 top-[100px] rotate-[-15deg]"><span class="opacity-20">1.</span> an ordered list</p>
             <p class="absolute opacity-80 text-lg max-lg:text-sm font-medium left-48 max-lg:left-16 top-[200px] rotate-[15deg] py-8 pl-8 pr-12 rounded-md border-l-4 border-white border-opacity-20 bg-white bg-opacity-[5%]"><span class="opacity-20">{">"}</span> block quotes :0</p>
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-medium left-20 max-lg:left-12 top-[350px]">paragraph</p>
@@ -72,7 +73,7 @@
             <p class="absolute opacity-60 text-xl max-lg:text-lg font-bold right-36 top-[820px] max-lg:top-[630px] -rotate-[15deg] max-lg:rotate-0"><span class="opacity-20">###</span> heading 3</p>
         </div>
     </div>
-    <div class="z-10 bg-primary flex flex-col items-center border-y border-white border-opacity-5 py-64 max-md:py-32 max-sm:py-16 max-sm:px-4">
+    <div id="newsletter" class="z-10 bg-primary flex flex-col items-center border-y border-white border-opacity-5 py-64 max-md:py-32 max-sm:py-16 max-sm:px-4">
         <p class="text-2xl font-bold text-center max-sm:text-sm">Join the email newsletter to stay tuned for updates.</p>
         <form
             class="flex flex-row max-sm:flex-col max-sm:w-full"
