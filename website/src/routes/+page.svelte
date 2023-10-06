@@ -73,7 +73,10 @@
             <p class="absolute opacity-60 text-xl max-lg:text-lg font-bold right-36 top-[820px] max-lg:top-[630px] -rotate-[15deg] max-lg:rotate-0"><span class="opacity-20">###</span> heading 3</p>
         </div>
     </div>
-    <div id="newsletter" class="z-10 bg-primary flex flex-col items-center border-y border-white border-opacity-5 py-64 max-md:py-32 max-sm:py-16 max-sm:px-4">
+    <div
+        id="newsletter"
+        class="z-10 bg-primary flex flex-col items-center border-y border-white border-opacity-5 py-64 max-md:py-32 max-sm:py-16 max-sm:px-4"
+    >
         <p class="text-2xl font-bold text-center max-sm:text-sm">Join the email newsletter to stay tuned for updates.</p>
         <form
             class="flex flex-row max-sm:flex-col max-sm:w-full"
