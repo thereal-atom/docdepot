@@ -49,6 +49,26 @@
             if (result.type !== "error") update();
         };
     };
+
+    const handleNameInput = (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        target.value = target.value.replaceAll(" ", "-");
+    };
+
+    const handleFileInput = (e: Event) => {
+        const target = e.target as HTMLInputElement & { files: File[] };
+
+        for (const file of target.files) {
+            const reader = new FileReader();
+
+            reader.readAsText(file);
+
+            reader.addEventListener("load", readerEvent => {
+                markdownString = readerEvent.target.result.toString();
+                markdownStore.set(markdownString);
+            });
+        };
+    };
 </script>
 
 <div class="flex flex-col w-screen h-full p-16 px-64 max-xl:px-32 max-lg:px-16 max-sm:px-8">
@@ -106,7 +126,7 @@
                         type="text"
                         name="name"
                         required
-                        on:input={e => e.target.value = e.target.value.replaceAll(" ", "-")}
+                        on:input={handleNameInput}
                     />
                 </div>
             </div>
@@ -131,6 +151,7 @@
             </div>
             <div class="flex flex-col w-full mt-4 rounded-md border border-solid border-white border-opacity-10">
                 {#if tab === "markdown"}
+                    <!-- TODO: make it auto resize when markdown file is uploaded -->
                     <MarkdownInput
                         {markdownString}
                         on:input={e => {
@@ -144,6 +165,23 @@
                     </div>
                 {/if}
             </div>
+            <p class="mt-1 text-sm font-semibold">
+                Or select a markdown file from your
+                <label
+                    class="text-indigo-400 hover:cursor-pointer"
+                    for="markdown_input"
+                >
+                    computer
+                </label> 
+                <input
+                    class="hidden"
+                    id="markdown_input"
+                    name="md"
+                    type="file"
+                    accept=".md,.txt"
+                    on:change={handleFileInput}
+                />
+            </p>
             <div class="flex flex-col mt-4">
                 <div class="flex flex-row items-center">
                     <p class="font-bold">Password</p>

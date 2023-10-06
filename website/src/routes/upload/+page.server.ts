@@ -6,8 +6,6 @@ export const actions = {
         const formData = await request.formData();
         const data = Object.fromEntries(formData);
 
-        console.log(data);
-
         const document = await api.document.create({
             markdownString: data.markdownString.toString(),
             name: data.name.toString().trim(),

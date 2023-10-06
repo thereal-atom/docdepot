@@ -57,12 +57,12 @@
                 Upload Markdown
             </a>
             <img
-                class="w-3/4 mt-16 rounded-md max-xl:w-full max-xl:px-8 max-md:hidden"
+                class="w-[1280px] mt-16 rounded-md max-xl:w-[1024px] max-lg:w-[768px] max-md:hidden"
                 src="/hero-image.webp"
                 alt="hero"
             />
             <img
-                class="w-full mt-12 px-8 rounded-md md:hidden max-sm:mt-24"
+                class="w-[640px] mt-12 px-8 rounded-md md:hidden max-sm:mt-24 max-sm:w-[500px] max-[500px]:w-[380px] max-[380px]:w-[320px] max-[320px]:w-[280px]"
                 src="/hero-image-small.webp"
                 alt="hero"
             />
@@ -83,11 +83,14 @@
                 required
             />
             <button
-                class="mt-4 ml-4 px-4 py-2 bg-[#7353BA] font-bold rounded-md max-sm:ml-0 disabled:opacity-40"
+                class="mt-4 ml-4 px-4 py-2 bg-indigo-500 font-bold rounded-md max-sm:ml-0 disabled:opacity-40"
                 disabled={loading}
             >
                 Sign Up
             </button>
         </form>
+    </div>
+    <div class="flex flex-col items-center w-full my-32 px-8 max-md:my-16">
+        <p class="text-3xl font-bold text-center">If you would like beta access, reach out on <a class="text-indigo-500" href="https://twitter.com/oscarfalll">twitter</a>.</p>
     </div>
 </div>

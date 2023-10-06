@@ -19,7 +19,7 @@
 </script>
 
 <textarea
-    class="p-8 bg-inherit rounded-md max-sm:p-4 max-sm:text-sm placeholder:text-sm placeholder:font-bold"
+    class="p-8 bg-inherit rounded-md resize-none max-sm:p-4 max-sm:text-sm placeholder:text-sm placeholder:font-bold"
     name="markdownString"
     on:input={handleMarkdownTextAreaInput}
     value={markdownString || ""}
