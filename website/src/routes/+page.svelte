@@ -1,6 +1,5 @@
 <script>
 	import { enhance } from "$app/forms";
-	// import { page } from "$app/stores";
 	import { addToast } from "$lib/stores/toasts";
 
     $: loading = false;
@@ -44,12 +43,7 @@
             if (result.type !== "error") update();
         };
     };
-
-    // $: innerWidth = 0;
 </script>
-
-<!-- <svelte:window bind:innerWidth/> -->
-
 <div class="flex flex-col min-h-screen">
     <div class="flex flex-col items-center min-h-screen max-sm:min-h-fit bg-gradient-to-br from-[#7353BA] to-[#2F195F]">
         <div class="flex flex-col items-center py-16">
@@ -62,19 +56,16 @@
             >
                 Upload Markdown
             </a>
-            <!-- {#if innerWidth > 768}
-                <img
-                    class="w-[1280px] mt-16 rounded-md max-xl:w-[1024px] max-lg:w-[768px] max-md:hidden"
-                    src="/hero-image.webp"
-                    alt="hero"
-                />
-            {:else}
-                <img
-                    class="w-[640px] mt-12 px-8 rounded-md md:hidden max-sm:mt-24 max-sm:w-[500px] max-[500px]:w-[380px] max-[380px]:w-[320px] max-[320px]:w-[280px]"
-                    src="/hero-image-small.webp"
-                    alt="hero"
-                />
-            {/if} -->
+            <img
+                class="w-3/4 mt-16 rounded-md max-xl:w-full max-xl:px-8 max-md:hidden"
+                src="/hero-image.webp"
+                alt="hero"
+            />
+            <img
+                class="w-full mt-12 px-8 rounded-md md:hidden max-sm:mt-24"
+                src="/hero-image-small.webp"
+                alt="hero"
+            />
         </div>
     </div>
     <div class="flex flex-col items-center my-64 max-md:my-32 max-sm:my-16 max-sm:px-4">
@@ -99,7 +90,7 @@
             </button>
         </form>
     </div>
-    <div class="flex flex-col items-center w-full my-32 px-8 max-md:my-16">
-        <p class="text-3xl font-bold text-center">If you would like beta access, reach out on <a class="text-indigo-500" href="https://twitter.com/oscarfalll">twitter</a>.</p>
+    <div class="flex flex-col items-center w-full my-32">
+        <p class="text-3xl font-bold">If you would like beta access, reach out on <a class="text-indigo-500" href="https://twitter.com/oscarfalll">twitter</a>.</p>
     </div>
 </div>
