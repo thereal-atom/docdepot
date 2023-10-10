@@ -2,20 +2,82 @@
 	import Markdown from "$lib/components/Markdown.svelte";
 	import MarkdownInput from "$lib/components/MarkdownInput.svelte";
 	import { markdownStore } from "$lib/stores/markdown";
+	import { onMount } from "svelte";
 
     $: markdownString = $markdownStore;
 
     let tab: "markdown" | "preview";
     $: tab = "markdown";
 
-    /**
-     * TODO: keyboard shortcuts
-     * 
-     * ctrl + b - bold
-     * ctrl + i - italic
-     * ctrl + p - preview
-     * ctrl + m - markdown
-    */
+    $: textHistory = [];
+
+    // dodgy types lol
+    const handleTextAreaKeyboardShortcuts = (event: { detail: Event }) => {
+        const e = event.detail as KeyboardEvent;
+        const textarea = e.target as HTMLTextAreaElement;
+
+        const selectionStart = textarea.selectionStart;
+        const selectionEnd = textarea.selectionEnd;
+
+        const selectedText = textarea.value.slice(selectionStart, selectionEnd);
+
+        switch (e.key) {
+            case "b":
+                e.preventDefault();
+
+                textHistory.push(textarea.value);
+
+                textarea.setRangeText(`**${selectedText}**`);
+                textarea.setSelectionRange(selectionEnd + 2, selectionEnd + 2);
+
+                markdownString = textarea.value;
+
+                break;
+            case "i":
+                e.preventDefault();
+
+                textHistory.push(textarea.value);
+
+                textarea.setRangeText(`*${selectedText}*`);
+                textarea.setSelectionRange(selectionEnd + 2, selectionEnd + 2);
+
+                markdownString = textarea.value;
+
+                break;
+            case "z":
+                if (textHistory.length === 0) {
+                    return;
+                };
+
+                e.preventDefault();
+
+                markdownString = textHistory.pop();
+                textHistory = textHistory;
+
+                break;
+        };
+    };
+
+    onMount(() => {
+        document.addEventListener("keydown", e => {
+            console.log(e.altKey);
+            
+            if (!e.altKey) {
+                return;
+            };
+
+            switch (e.key) {
+                case "p":
+                    tab = "preview";
+
+                    break;
+                case "m":
+                    tab = "markdown";
+
+                    break;
+            };
+        });
+    });
 
     // TODO: syntax highlighting
 
@@ -24,7 +86,7 @@
 
 <div class="flex flex-col p-16 min-h-screen max-sm:p-8">
     <h1 class="text-4xl font-black max-sm:text-3xl max-[330px]:text-2xl">Markdown Editor</h1>
-    <!-- TODO: extract into component -->
+    <!-- TODO: extract into component (because upload has the same tab html) -->
     <div class="flex flex-row w-full mt-4 rounded-md border border-white border-opacity-10">
         <button
             class="tab border-r border-white border-opacity-10 {tab === "markdown" ? "active" : ""}"
@@ -51,6 +113,7 @@
                     markdownStore.set(e.detail);
                     markdownString = "";
                 }}
+                on:shortcut={handleTextAreaKeyboardShortcuts}
             />
         {:else}
             <div class="p-16 max-lg:p-8">
