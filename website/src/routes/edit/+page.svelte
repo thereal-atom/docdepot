@@ -7,6 +7,19 @@
 
     let tab: "markdown" | "preview";
     $: tab = "markdown";
+
+    /**
+     * TODO: keyboard shortcuts
+     * 
+     * ctrl + b - bold
+     * ctrl + i - italic
+     * ctrl + p - preview
+     * ctrl + m - markdown
+    */
+
+    // TODO: syntax highlighting
+
+    // TODO: render markdown input as normal markdown but with syntax (highlighted)
 </script>
 
 <div class="flex flex-col p-16 min-h-screen max-sm:p-8">

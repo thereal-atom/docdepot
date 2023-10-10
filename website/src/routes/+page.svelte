@@ -44,6 +44,13 @@
             if (result.type !== "error") update();
         };
     };
+
+    // TODO: get rid of beta access/newsletter sections
+    // TODO: add features section
+    // TODO: add contact us section
+    // TODO: maybe add FAQ
+    // TODO: add CTA at the end
+    // TODO: maybe add section in smaller containers like https://limitless.email
 </script>
 
 <div class="flex flex-col">
@@ -56,7 +63,7 @@
         </div>
 
         <!-- TODO: REFACTOR BRO WTF IS THIS. but it works so fine for now. -->
-        <div class="opacity-60 max-xl:opacity-20">
+        <div class="opacity-60 max-xl:opacity-10">
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-medium left-20 max-lg:left-12 top-[100px] rotate-[-15deg]"><span class="opacity-20">1.</span> an ordered list</p>
             <p class="absolute opacity-80 text-lg max-lg:text-sm font-medium left-48 max-lg:left-16 top-[200px] rotate-[15deg] py-8 pl-8 pr-12 rounded-md border-l-4 border-white border-opacity-20 bg-white bg-opacity-[5%]"><span class="opacity-20">{">"}</span> block quotes :0</p>
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-medium left-20 max-lg:left-12 top-[350px]">paragraph</p>
