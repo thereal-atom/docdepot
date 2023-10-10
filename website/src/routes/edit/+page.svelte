@@ -79,9 +79,21 @@
         });
     });
 
+    /**
+     * TODO: remainder of keyboard shortcuts
+     * 
+     * 
+    */
+
+    // TODO: if selected text and '(', '[' and similar are typed, surround selected text with that symbol
+
     // TODO: syntax highlighting
 
     // TODO: render markdown input as normal markdown but with syntax (highlighted)
+
+    // TODO: suggest shortcuts when they're not used but can be
+
+    // TODO: markdown cheat sheet
 </script>
 
 <div class="flex flex-col p-16 min-h-screen max-sm:p-8">
