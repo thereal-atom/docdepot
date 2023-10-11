@@ -3,6 +3,13 @@
     const converter = new showdown.Converter();
 
     export let of: string = "";
+
+    // TODO: style all elements
+    // TODO: copy and pase includes markdown
+    // TODO: extra vertical margin for code block and actual list (to add to y margin of list item)
+    // TODO: make heading 2/3 smaller because they look too close in size to each other
+    // TODO: ~~strike-through~~ and __underlined__ text
+    // TODO: tables
 </script>
 
 <div class="md">
@@ -61,5 +68,9 @@
     
     :global(.md img) {
         @apply my-4;
+    }
+
+    :global(.md blockquote) {
+        @apply bg-secondary my-4 p-4 rounded-md border-l-4 border-white;
     }
 </style>
