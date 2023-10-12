@@ -8,8 +8,14 @@ Made with Svelte, Tailwind, Bun, Elysia, Typescript, Drizzle and Turso.
 
 ![landing](/website/static/images/landing.png)
 
+---
+
 ![upload](/website/static/images/upload.png)
 
+---
+
 ![upload](/website/static/images/upload-preview.png)
+
+---
 
 ![guide](/website/static/images/guide.png)
