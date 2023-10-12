@@ -50,7 +50,7 @@
     }
     
     :global(.md li) {
-        @apply my-4 max-lg:text-sm max-lg:my-2 max-[330px]:text-xs;
+        @apply my-2 max-lg:text-sm max-lg:my-2 max-[330px]:text-xs;
     }
     
     :global(.md strong) {
