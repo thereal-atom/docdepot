@@ -4,12 +4,16 @@
 
     export let of: string = "";
 
-    // TODO: style all elements
     // TODO: copy and pase includes markdown
-    // TODO: extra vertical margin for code block and actual list (to add to y margin of list item)
-    // TODO: make heading 2/3 smaller because they look too close in size to each other
-    // TODO: ~~strike-through~~ and __underlined__ text
-    // TODO: tables
+
+    /**
+     * TODO: parse + style following elements
+     * underline
+     * strikethrough
+     * checklist
+     * table
+     * highlighted text
+    */
 </script>
 
 <div class="md">
@@ -38,11 +42,11 @@
     }
     
     :global(.md ol) {
-        @apply list-decimal ml-4;
+        @apply list-decimal ml-4 my-8;
     }
     
     :global(.md ul) {
-        @apply list-disc ml-4;
+        @apply list-disc ml-4 my-8;
     }
     
     :global(.md li) {
@@ -58,7 +62,7 @@
     }
     
     :global(.md pre) {
-        @apply my-2 p-4 bg-gray-900 rounded-md;
+        @apply my-8 p-6 bg-gray-900 rounded-md;
     }
     
     :global(.md pre code) {
@@ -72,5 +76,9 @@
 
     :global(.md blockquote) {
         @apply bg-secondary my-4 p-4 rounded-md border-l-4 border-white;
+    }
+
+    :global(.md hr) {
+        @apply my-4 opacity-10;
     }
 </style>

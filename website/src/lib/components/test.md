@@ -9,23 +9,33 @@ paragraph
 
 # heading 1
 
-# heading 2
+## heading 2
 
-# heading 3
-
-**bold text**
+### heading 3
 
 *italic text*
 
+**bold text**
+
+~underlined text~
+
+~~striked through text~~
+
+==highlighted text==
+
 > blockquote
+
+- unordered list
+- second item
+- third item
 
 1. ordered list
 2. second item
 3. third item
 
-- unordered list
-- second item
-- third item
+- [ ] checklist
+- [x] checked item 2
+- [ ] unchecked item 3
 
 1. nested ordered list
     1. first list first item
