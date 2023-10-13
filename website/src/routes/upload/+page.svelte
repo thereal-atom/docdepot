@@ -64,8 +64,7 @@
             reader.readAsText(file);
 
             reader.addEventListener("load", readerEvent => {
-                markdownString = readerEvent.target.result.toString();
-                markdownStore.set(markdownString);
+                markdownString = `{{DOC-DEPOT-FILE-INPUT}}${readerEvent.target.result.toString()}`;
             });
         };
     };
@@ -151,7 +150,6 @@
             </div>
             <div class="flex flex-col w-full mt-4 rounded-md border border-solid border-white border-opacity-10">
                 {#if tab === "markdown"}
-                    <!-- TODO: make it auto resize when markdown file is uploaded -->
                     <MarkdownInput
                         {markdownString}
                         on:input={e => {

@@ -115,7 +115,9 @@
 
     // TODO: markdown cheat sheet
 
-    // TODO: redo
+    // TODO: redo functionality (Ctrl + Z)
+
+    // TODO: toggle keyboard shortcuts
 </script>
 
 <div class="flex flex-col p-16 min-h-screen max-sm:p-8">

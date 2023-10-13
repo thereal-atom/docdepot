@@ -1,20 +1,39 @@
 <script lang="ts">
+	import { markdownStore } from "$lib/stores/markdown";
 	import { createEventDispatcher, onMount } from "svelte";
 
     export let markdownString = "";
 
     const dispatch = createEventDispatcher();
 
-    const setTextAreaHeight = (e: any) => {
-        e.target.style.height = "";
-        e.target.style.height = e.target.scrollHeight + "px";
+    const setTextAreaHeight = () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
     };
 
-    onMount(() => setTextAreaHeight({ target: document.querySelector("textarea") }));
+    let textarea: HTMLTextAreaElement | undefined;
+    $: textarea = undefined;
 
-    const handleMarkdownTextAreaInput = (e: any) => {
-        setTextAreaHeight(e);
-        dispatch("input", e.target.value);
+    $: markdownString, (() => {
+        if (!textarea) return;
+
+        // janky asl but makes pasting markdown from file work
+        if (markdownString.includes("{{DOC-DEPOT-FILE-INPUT}}")) {
+            markdownString = markdownString.replace("{{DOC-DEPOT-FILE-INPUT}}", "");
+            markdownStore.set(markdownString);
+            textarea.setSelectionRange(0, 0);
+            textarea.setRangeText(markdownString);
+        };
+
+        setTextAreaHeight();
+    })();
+
+    onMount(() => {
+        setTextAreaHeight();
+    });
+
+    const handleMarkdownTextAreaInput = () => {
+        dispatch("input", textarea.value);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -38,7 +57,8 @@
     name="markdownString"
     on:input={handleMarkdownTextAreaInput}
     on:keydown={handleKeyDown}
-    value={markdownString || ""}
+    value={markdownString}
     required
     placeholder="Write some **markdown**"
+    bind:this={textarea}
 />
