@@ -1,11 +1,9 @@
 <script>
     import Markdown from "$lib/components/Markdown.svelte";
 	import ViewMarkdown from "$lib/components/ViewMarkdown.svelte";
-    import guideMarkdownString from "$lib/components/guide.md?raw";
-
-    // TODO: make sure guide is all sound
+    import markdownGuideMarkdownString from "$lib/components/markdown-guide.md?raw";
 </script>
 
 <ViewMarkdown>
-    <Markdown of={guideMarkdownString} />
+    <Markdown of={markdownGuideMarkdownString} />
 </ViewMarkdown>

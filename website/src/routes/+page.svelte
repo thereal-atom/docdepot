@@ -68,7 +68,7 @@
             <p class="absolute opacity-80 text-lg max-lg:text-sm font-medium left-48 max-lg:left-16 top-[200px] rotate-[15deg] py-8 pl-8 pr-12 rounded-md border-l-4 border-white border-opacity-20 bg-white bg-opacity-[5%]"><span class="opacity-20">{">"}</span> block quotes :0</p>
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-medium left-20 max-lg:left-12 top-[350px]">paragraph</p>
             <p class="absolute opacity-60 text-3xl max-lg:text-2xl font-bold left-32 max-lg:left-8 top-[450px] -rotate-[15deg]"><span class="opacity-20">#</span> heading 1</p>
-            <p class="absolute opacity-60 text-lg max-lg:text-sm font-bold left-28 max-lg:left-8 top-[600px] max-lg:top-[550px]"><span class="opacity-20">[</span><span class="text-indigo-500">link</span><span class="opacity-20">](</span>docdepot.com<span class="opacity-20">)</span></p>
+            <p class="absolute opacity-60 text-lg max-lg:text-sm font-bold left-28 max-lg:left-8 top-[600px] max-lg:top-[550px]"><span class="opacity-20">[</span><span class="text-indigo-500">link</span><span class="opacity-20">](</span>docdepot.vercel.app<span class="opacity-20">)</span></p>
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-bold left-20 max-lg:left-12 top-[700px] max-lg:top-[620px] rotate-[15deg]"><span class="opacity-20">*</span>italic text<span class="opacity-20">*</span></p>
             <p class="absolute opacity-60 text-lg max-lg:text-sm font-bold left-48 top-[800px] max-lg:top-[640px] -rotate-[15deg] max-lg:rotate-0"><span class="opacity-20">-</span> another list</p>
     
@@ -105,9 +105,9 @@
             </button>
         </form>
     </div>
-    <div class="sub flex flex-col items-center w-full py-64">
+    <!-- <div class="sub flex flex-col items-center w-full py-64">
         <p class="px-8 text-3xl font-bold text-center">If you would like beta access, reach out on <a class="text-indigo-500" href="https://twitter.com/oscarfalll">twitter</a>.</p>
-    </div>
+    </div> -->
 </div>
 
 <style lang="postcss">

@@ -4,7 +4,7 @@
 
     export let of: string = "";
 
-    // TODO: copy and pase includes markdown
+    // TODO: copy and paste includes markdown
 
     /**
      * TODO: parse + style following elements

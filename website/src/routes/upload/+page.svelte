@@ -27,7 +27,7 @@
             addToast(
                 result.type === "success" ? {
                     title: "Document uploaded successfully",
-                    message: `Find it at docdepot.com/view/${result.data.name}`,
+                    message: `Find it at docdepot.vercel.app/view/${result.data.name}`,
                     type: "success",
                 }
                 : result.type === "error" ? {
@@ -92,7 +92,7 @@
         </div>
     {:else}
         <h1 class="text-4xl font-black max-sm:text-3xl max-[330px]:text-2xl">Upload Markdown</h1>
-        <p class="mt-6 text-indigo-400 font-bold text-sm">Press upload to publish the page. You will be provided with a URL you can share with others.</p>
+        <p class="mt-6 text-indigo-400 font-bold text-sm">Press upload to publish the page. You will be provided with a URL you can share with others. Anyone will be able to view your document if they have the name.</p>
         <form
             class="mt-8"
             method="POST"
@@ -113,12 +113,13 @@
                         </div>
                     </div>
                 </div>
+                <p class="text-xs opacity-30">It is suggested that you prefix the name with a username so that we can help you locate your documents if you don't write them down.</p>
                 <div class="flex flex-row w-full mt-1 rounded-md border border-white border-opacity-10 max-sm:w-full">
                     <label
                         class="px-8 py-4 bg-black bg-opacity-10 text-white font-bold text-opacity-70 rounded-l-md border-r border-white border-opacity-10 max-sm:px-3 max-sm:text-xs"
                         for="name"
                     >
-                        docdepot.com/view/
+                        docdepot.vercel.app/view/
                     </label>
                     <input
                         class="w-full px-4 py-2 bg-inherit text-lg rounded-r-md max-sm:w-full max-sm:text-xs"
