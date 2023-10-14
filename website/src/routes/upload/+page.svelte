@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Document } from "$lib/api";
+	import { track } from "@vercel/analytics";
 	import { enhance } from "$app/forms";
 	import { page } from "$app/stores";
 	import Markdown from "$lib/components/Markdown.svelte";
@@ -42,6 +43,8 @@
                 markdownStore.set("");
                 markdownString = "";
                 newDocument = result.data;
+
+                track("CreateDocument", { name: result.data.name });
             };
 
             loading = false;
