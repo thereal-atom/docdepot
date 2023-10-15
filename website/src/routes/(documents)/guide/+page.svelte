@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>DocDepot - Guide</title>
+</svelte:head>
+
 <script>
     import Markdown from "$lib/components/Markdown.svelte";
 	import ViewMarkdown from "$lib/components/ViewMarkdown.svelte";

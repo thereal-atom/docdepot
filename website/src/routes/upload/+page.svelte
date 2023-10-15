@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>DocDepot - Upload Markdown</title>
+</svelte:head>
+
 <script lang="ts">
 	import type { Document } from "$lib/api";
 	import { track } from "@vercel/analytics";

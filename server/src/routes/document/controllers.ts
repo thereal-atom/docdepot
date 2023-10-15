@@ -20,7 +20,7 @@ export const createDocument = async (data: CreateDocumentData) => {
     const {
         hashedPassword,
         salt,
-    } = generatePasswordHash(data.password);
+    } = await generatePasswordHash(data.password);
 
     const document = await createDatabaseDocument({
         ...data,
@@ -47,7 +47,7 @@ export const deleteDocumentById = async (id: number, password: string) => {
         salt,
     ] = document.password.split(";");
 
-    const isPasswordValid = verifyPassword(password, salt, hashedPassword);
+    const isPasswordValid = await verifyPassword(password, salt, hashedPassword);
     if (!isPasswordValid) throw new UnauthorizedError("invalid password");
 
     await deleteDatabaseDocument({ id });

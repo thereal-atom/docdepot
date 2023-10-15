@@ -1,56 +1,9 @@
 <script>
-	import { enhance } from "$app/forms";
 	import Hero from "$lib/components/Hero.svelte";
-	import { addToast } from "$lib/stores/toasts";
 
-    $: loading = false;
-
-    const handleSubscribe = () => {
-        // this code is either really cool, or really shit, lol
-        // the actual handling of the request is in '+page.server.ts'
-        // this is done because it uses a server env variable (env.SECRET) so it shouldn't run on the client side
-        // the result of the request is handled here
-        // this is reminiscent of my architecture on the backend
-        // where the router only handles the http stuff and the controller handles business logic and so on
-        // but here the page.server handles the fetch stuff and the form handles the response stuff
-        // again, either really cool or just shit lmao
-
-        loading = true;
-
-        return async ({
-            result,
-            update,
-        }) => {
-            addToast(
-                result.type === "success" ? {
-                    title: "Subscribed successfully",
-                    message: "Look out in your inbox for updates!",
-                    type: "success",
-                }
-                : result.type === "error" ? {
-                    title: "There was an error subscribing",
-                    message: result.error.message,
-                    type: "error",
-                }
-                : {
-                    title: "Unknown Error",
-                    message: "There was an unknown error.",
-                    type: "error",
-                }
-            );
-
-            loading = false;
-
-            if (result.type !== "error") update();
-        };
-    };
-
-    // TODO: get rid of beta access/newsletter sections
     // TODO: add features section
     // TODO: add contact us section
     // TODO: maybe add FAQ
-    // TODO: add CTA at the end
-    // TODO: maybe add section in smaller containers like https://limitless.email
 </script>
 
 <div class="flex flex-col">
@@ -85,39 +38,80 @@
             <p class="absolute opacity-60 text-xl max-lg:text-lg font-bold right-36 top-[820px] max-lg:top-[630px] -rotate-[15deg] max-lg:rotate-0"><span class="opacity-20">###</span> heading 3</p>
         </div>
     </div>
-    <div
-        id="newsletter"
-        class="z-10 bg-primary flex flex-col items-center border-y border-white border-opacity-5 py-64 max-md:py-32 max-sm:py-16 max-sm:px-4"
-    >
-        <p class="text-2xl font-bold text-center max-sm:text-sm">Join the email newsletter to stay tuned for updates.</p>
-        <form
-            class="flex flex-row max-sm:flex-col max-sm:w-full"
-            method="POST"
-            use:enhance={handleSubscribe}
-        >
-            <input
-                class="mt-4 px-4 py-3 bg-inherit font-bold rounded-md border  border-white border-opacity-10"
-                placeholder="Your Email Address"
-                type="text"
-                name="email"
-                required
-            />
-            <button
-                class="mt-4 ml-4 px-4 py-2 bg-indigo-500 font-bold rounded-md max-sm:ml-0 disabled:opacity-40"
-                disabled={loading}
+    <div class="flex flex-col justify-center py-16 px-8 bg-primary">
+        <div class="flex flex-col mt-16 p-20 pb-28 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md">
+            <h1 class="text-4xl font-bold">It takes only a few seconds.</h1>
+            <div class="grid grid-cols-2 gap-y-16 mt-24">
+                <div class="flex flex-col w-1/2">
+                    <div class="w-fit p-3 bg-secondary rounded-md">
+                        <img
+                            class="w-7 h-7"
+                            src="/icons/upload.svg"
+                            alt="icon"
+                        />
+                    </div>
+                    <h2 class="mt-2 font-bold text-xl">Upload Markdown</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60">DocDepot allows you to upload your markdown text to make it available for anyone to view in a beautiful document. You don't even need any coding knowledge.</p>
+                </div>
+                <div class="flex flex-col w-1/2">
+                    <div class="w-fit p-3 bg-secondary rounded-md">
+                        <img
+                            class="w-7 h-7"
+                            src="/icons/edit.svg"
+                            alt="icon"
+                        />
+                    </div>
+                    <h2 class="mt-2 font-bold text-xl">Edit Markdown</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60">Use our markdown editor to quickly draw up documents. Use keyboard shortcuts to increase your productivity and preview your document to be sure it looks perfect before your upload.</p>
+                </div>
+                <div class="flex flex-col w-1/2">
+                    <div class="w-fit p-3 bg-secondary rounded-md">
+                        <img
+                            class="w-7 h-7"
+                            src="/icons/chart.svg"
+                            alt="icon"
+                        />
+                    </div>
+                    <p class="w-fit mt-2 px-1 py-0.5 bg-primary text-[10px] font-bold rounded-md border border-white border-opacity-20">Coming Soon</p>
+                    <h2 class="mt-2 font-bold text-xl">Document Analytics</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60">Analytics provide you insights into your website's visitors, stay time and more.</p>
+                </div>
+                <div class="flex flex-col w-1/2">
+                    <div class="w-fit p-3 bg-secondary rounded-md">
+                        <img
+                            class="w-7 h-7"
+                            src="/icons/history.svg"
+                            alt="icon"
+                        />
+                    </div>
+                    <p class="w-fit mt-2 px-1 py-0.5 bg-primary text-[10px] font-bold rounded-md border border-white border-opacity-20">Coming Soon</p>
+                    <h2 class="mt-2 font-bold text-xl">Version Control</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60">View your documents' history and restore content even when you think you've lost it.</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col mt-16 p-20 bg-secondary rounded-md">
+            <h1 class="text-4xl font-bold">Frequently Asked Questions</h1>
+            <div class="flex flex-col mt-12">
+                <p>None, because this tool is that easy to use ;).</p>
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-16 py-48 px-16 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md">
+            <p class="px-8 text-3xl font-bold text-center">Share your knowledge with the world. Upload your markdown now.</p>
+            <a
+                class="mt-4 px-6 py-2 bg-secondary rounded-md font-bold max-sm:text-sm"
+                href="/upload"
             >
-                Sign Up
-            </button>
-        </form>
-    </div>
-    <!-- <div class="flex flex-row justify-center py-48 px-24 bg-primary">
-        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
+                Upload Markdown
+            </a>
+        </div>
+        <!-- <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
             <div class="flex flex-row">
                 <img
                     src=""
                     alt="icon"
                 />
-                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+                <h2 class="ml-2 font-bold text-xl">Markdown Editor</h2>
             </div>
             <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
         </div>
@@ -127,7 +121,8 @@
                     src=""
                     alt="icon"
                 />
-                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+                <h2 class="ml-2 font-bold text-xl">Analytics</h2>
+                <p>Coming Soon</p>
             </div>
             <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
         </div>
@@ -137,29 +132,11 @@
                     src=""
                     alt="icon"
                 />
-                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+                <h2 class="ml-2 font-bold text-xl">Version Control</h2>
+                <p>Coming Soon</p>
             </div>
             <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
-        </div>
-        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
-            <div class="flex flex-row">
-                <img
-                    src=""
-                    alt="icon"
-                />
-                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
-            </div>
-            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
-        </div>
-    </div> -->
-    <div class="sub flex flex-col items-center w-full py-64">
-        <p class="px-8 text-3xl font-bold text-center">Share your knowledge with the world. Upload your markdown now.</p>
-        <a
-            class="bg-blue-500 mt-4 px-6 py-2 rounded-md font-bold max-sm:text-sm"
-            href="/upload"
-        >
-            Upload Markdown
-        </a>
+        </div> -->
     </div>
 </div>
 

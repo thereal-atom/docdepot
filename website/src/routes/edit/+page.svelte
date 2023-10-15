@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>DocDepot - Edit Markdown</title>
+</svelte:head>
+
 <script lang="ts">
 	import Markdown from "$lib/components/Markdown.svelte";
 	import MarkdownInput from "$lib/components/MarkdownInput.svelte";
