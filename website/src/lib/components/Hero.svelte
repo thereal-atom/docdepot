@@ -8,7 +8,7 @@
             class="w-1/2 py-1 text-[8px] rounded-md m-2 transition-all hover:cursor-pointer focus:outline-none {tab === "markdown" ? "bg-white bg-opacity-5" : ""}"
             on:click={() => tab = "markdown"}
         >
-            Local Markdown
+            Markdown Editor
         </button>
         <button
             class="w-1/2 py-1 text-[8px] rounded-md m-2 transition-all hover:cursor-pointer focus:outline-none {tab === "preview" ? "bg-white bg-opacity-5" : ""}"

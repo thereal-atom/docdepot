@@ -58,7 +58,12 @@
         <div class="z-10 flex flex-col items-center">
             <h1 class="text-5xl font-black text-center max-lg:text-4xl max-md:text-3xl max-[400px]:text-xl">Share your knowledge</h1>
             <p class="mt-4 text-lg font-semibold opacity-60 text-center max-md:text-base max-sm:text-sm">Upload your Markdown text to create a beautiful and shareable document, without any coding knowledge required.</p>
-            <a class="bg-blue-500 mt-4 px-6 py-2 rounded-md font-bold max-sm:text-sm" href="#newsletter">Upload Markdown</a>
+            <a
+                class="bg-blue-500 mt-4 px-6 py-2 rounded-md font-bold max-sm:text-sm"
+                href="/upload"
+            >
+                Upload Markdown
+            </a>
             <Hero />
         </div>
 
@@ -105,9 +110,57 @@
             </button>
         </form>
     </div>
-    <!-- <div class="sub flex flex-col items-center w-full py-64">
-        <p class="px-8 text-3xl font-bold text-center">If you would like beta access, reach out on <a class="text-indigo-500" href="https://twitter.com/oscarfalll">twitter</a>.</p>
+    <!-- <div class="flex flex-row justify-center py-48 px-24 bg-primary">
+        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
+            <div class="flex flex-row">
+                <img
+                    src=""
+                    alt="icon"
+                />
+                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+            </div>
+            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
+        </div>
+        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
+            <div class="flex flex-row">
+                <img
+                    src=""
+                    alt="icon"
+                />
+                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+            </div>
+            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
+        </div>
+        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
+            <div class="flex flex-row">
+                <img
+                    src=""
+                    alt="icon"
+                />
+                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+            </div>
+            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
+        </div>
+        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
+            <div class="flex flex-row">
+                <img
+                    src=""
+                    alt="icon"
+                />
+                <h2 class="ml-2 font-bold text-xl">Feature 1</h2>
+            </div>
+            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
+        </div>
     </div> -->
+    <div class="sub flex flex-col items-center w-full py-64">
+        <p class="px-8 text-3xl font-bold text-center">Share your knowledge with the world. Upload your markdown now.</p>
+        <a
+            class="bg-blue-500 mt-4 px-6 py-2 rounded-md font-bold max-sm:text-sm"
+            href="/upload"
+        >
+            Upload Markdown
+        </a>
+    </div>
 </div>
 
 <style lang="postcss">
