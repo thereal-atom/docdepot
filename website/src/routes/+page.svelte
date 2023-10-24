@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center mt-16 py-48 px-16 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md max-sm:px-4 max-sm:py-16">
-            <p class="px-8 text-3xl font-bold text-center max-sm:text-xl">Share your knowledge with the world. Upload your markdown now.</p>
+            <p class="px-8 text-3xl font-bold text-center max-sm:text-xl">Share your knowledge with the world. Upload your markdown today.</p>
             <a
                 class="mt-4 px-6 py-2 bg-secondary rounded-md font-bold max-sm:text-sm"
                 href="/upload"
