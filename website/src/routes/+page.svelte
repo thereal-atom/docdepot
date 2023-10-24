@@ -1,9 +1,5 @@
 <script>
 	import Hero from "$lib/components/Hero.svelte";
-
-    // TODO: add features section
-    // TODO: add contact us section
-    // TODO: maybe add FAQ
 </script>
 
 <div class="flex flex-col">
@@ -39,65 +35,65 @@
         </div>
     </div>
     <div class="flex flex-col justify-center py-16 px-8 bg-primary">
-        <div class="flex flex-col mt-16 p-20 pb-28 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md">
-            <h1 class="text-4xl font-bold">It takes only a few seconds.</h1>
-            <div class="grid grid-cols-2 gap-y-16 mt-24">
-                <div class="flex flex-col w-1/2">
+        <div class="flex flex-col mt-16 p-20 pb-28 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md max-md:px-12 max-sm:p-8">
+            <h1 class="text-4xl font-bold max-sm:text-2xl">It takes only a few seconds.</h1>
+            <div class="grid grid-cols-2 gap-y-16 mt-24 max-sm:grid-cols-1 max-sm:mt-12 max-sm:gap-y-8">
+                <div class="flex flex-col w-1/2 max-md:w-full max-md:pr-4">
                     <div class="w-fit p-3 bg-secondary rounded-md">
                         <img
-                            class="w-7 h-7"
+                            class="w-7 h-7 max-sm:w-5 max-sm:h-5"
                             src="/icons/upload.svg"
                             alt="icon"
                         />
                     </div>
-                    <h2 class="mt-2 font-bold text-xl">Upload Markdown</h2>
-                    <p class="mt-2 font-semibold text-sm opacity-60">DocDepot allows you to upload your markdown text to make it available for anyone to view in a beautiful document. You don't even need any coding knowledge.</p>
+                    <h2 class="mt-2 font-bold text-xl max-sm:text-lg">Upload Markdown</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60 max-sm:text-xs">DocDepot allows you to upload your markdown text to make it available for anyone to view in a beautiful document. You don't even need any coding knowledge.</p>
                 </div>
-                <div class="flex flex-col w-1/2">
+                <div class="flex flex-col w-1/2 max-md:w-full max-md:pr-4">
                     <div class="w-fit p-3 bg-secondary rounded-md">
                         <img
-                            class="w-7 h-7"
+                            class="w-7 h-7 max-sm:w-5 max-sm:h-5"
                             src="/icons/edit.svg"
                             alt="icon"
                         />
                     </div>
-                    <h2 class="mt-2 font-bold text-xl">Edit Markdown</h2>
-                    <p class="mt-2 font-semibold text-sm opacity-60">Use our markdown editor to quickly draw up documents. Use keyboard shortcuts to increase your productivity and preview your document to be sure it looks perfect before your upload.</p>
+                    <h2 class="mt-2 font-bold text-xl max-sm:text-lg">Edit Markdown</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60 max-sm:text-xs">Use our markdown editor to quickly draw up documents. Use keyboard shortcuts to increase your productivity and preview your document to be sure it looks perfect before your upload.</p>
                 </div>
-                <div class="flex flex-col w-1/2">
+                <div class="flex flex-col w-1/2 max-md:w-full max-md:pr-4">
                     <div class="w-fit p-3 bg-secondary rounded-md">
                         <img
-                            class="w-7 h-7"
+                            class="w-7 h-7 max-sm:w-5 max-sm:h-5"
                             src="/icons/chart.svg"
                             alt="icon"
                         />
                     </div>
                     <p class="w-fit mt-2 px-1 py-0.5 bg-primary text-[10px] font-bold rounded-md border border-white border-opacity-20">Coming Soon</p>
-                    <h2 class="mt-2 font-bold text-xl">Document Analytics</h2>
-                    <p class="mt-2 font-semibold text-sm opacity-60">Analytics provide you insights into your website's visitors, stay time and more.</p>
+                    <h2 class="mt-2 font-bold text-xl max-sm:text-lg">Document Analytics</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60 max-sm:text-xs">Analytics provide you insights into your website's visitors, stay time and more.</p>
                 </div>
-                <div class="flex flex-col w-1/2">
+                <div class="flex flex-col w-1/2 max-md:w-full max-md:pr-4">
                     <div class="w-fit p-3 bg-secondary rounded-md">
                         <img
-                            class="w-7 h-7"
+                            class="w-7 h-7 max-sm:w-5 max-sm:h-5"
                             src="/icons/history.svg"
                             alt="icon"
                         />
                     </div>
                     <p class="w-fit mt-2 px-1 py-0.5 bg-primary text-[10px] font-bold rounded-md border border-white border-opacity-20">Coming Soon</p>
-                    <h2 class="mt-2 font-bold text-xl">Version Control</h2>
-                    <p class="mt-2 font-semibold text-sm opacity-60">View your documents' history and restore content even when you think you've lost it.</p>
+                    <h2 class="mt-2 font-bold text-xl max-sm:text-lg">Version Control</h2>
+                    <p class="mt-2 font-semibold text-sm opacity-60 max-sm:text-xs">View your documents' history and restore content even when you think you've lost it.</p>
                 </div>
             </div>
         </div>
-        <div class="flex flex-col mt-16 p-20 bg-secondary rounded-md">
-            <h1 class="text-4xl font-bold">Frequently Asked Questions</h1>
+        <div class="flex flex-col mt-16 p-20 bg-secondary rounded-md max-sm:p-12">
+            <h1 class="text-4xl font-bold max-sm:text-2xl">Frequently Asked Questions</h1>
             <div class="flex flex-col mt-12">
                 <p>None, because this tool is that easy to use ;).</p>
             </div>
         </div>
-        <div class="flex flex-col items-center mt-16 py-48 px-16 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md">
-            <p class="px-8 text-3xl font-bold text-center">Share your knowledge with the world. Upload your markdown now.</p>
+        <div class="flex flex-col items-center mt-16 py-48 px-16 bg-gradient-to-br from-[#260a6b] to-[#3B82F6] rounded-md max-sm:px-4 max-sm:py-16">
+            <p class="px-8 text-3xl font-bold text-center max-sm:text-xl">Share your knowledge with the world. Upload your markdown now.</p>
             <a
                 class="mt-4 px-6 py-2 bg-secondary rounded-md font-bold max-sm:text-sm"
                 href="/upload"
@@ -105,47 +101,11 @@
                 Upload Markdown
             </a>
         </div>
-        <!-- <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
-            <div class="flex flex-row">
-                <img
-                    src=""
-                    alt="icon"
-                />
-                <h2 class="ml-2 font-bold text-xl">Markdown Editor</h2>
-            </div>
-            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
-        </div>
-        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
-            <div class="flex flex-row">
-                <img
-                    src=""
-                    alt="icon"
-                />
-                <h2 class="ml-2 font-bold text-xl">Analytics</h2>
-                <p>Coming Soon</p>
-            </div>
-            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
-        </div>
-        <div class="flex flex-col w-1/5 mx-4 p-4 rounded-md border border-white border-opacity-10">
-            <div class="flex flex-row">
-                <img
-                    src=""
-                    alt="icon"
-                />
-                <h2 class="ml-2 font-bold text-xl">Version Control</h2>
-                <p>Coming Soon</p>
-            </div>
-            <p class="font-semibold text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet praesentium, eum quaerat laboriosam facere distinctio ratione eaque velit atque ea dolores optio. Necessitatibus aut quae quam quisquam voluptas. Vitae, quam!</p>
-        </div> -->
     </div>
 </div>
 
 <style lang="postcss">
     .main {
         background: radial-gradient(circle, rgba(38,10,107,1) 10%, rgba(1,9,18,1) 70%, rgba(1,9,18,1) 100%);
-    }
-
-    .sub {
-        background: radial-gradient(circle, rgba(38,10,107,1) 5%, rgba(1,9,18,1) 40%, rgba(1,9,18,1) 100%);
     }
 </style>
